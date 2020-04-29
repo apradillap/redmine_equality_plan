@@ -1,3 +1,5 @@
 = redmine_equality_plan
 
 Description goes here
+
+rake redmine:plugins:migrate
