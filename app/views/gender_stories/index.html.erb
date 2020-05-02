@@ -1,1 +1,34 @@
-<h1>Gender Stories</h1>
+<h2><%= l(:label_gender_statistics) %></h2>
+
+<div class="autoscroll">
+<table class="list users">
+  <thead>
+    <tr>
+      <th><%= l(:label_gender) %></th>
+      <th><%= l(:label_total) %></th>
+      <th><%= l(:label_percentage) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= l(:label_male) %>
+      </td>
+      <td>
+        <%= User.male.count %>
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= l(:label_female) %>
+      </td>
+      <td>
+        <%= User.female.count %>
+      </td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>

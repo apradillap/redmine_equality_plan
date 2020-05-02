@@ -1,0 +1,7 @@
+# Spanish strings go here for Rails i18n
+es:
+  label_female: Mujeres
+  label_gender: Género
+  label_gender_statistics: Estadísticas de género
+  label_male: Hombres
+  label_percentage: Porcentaje
