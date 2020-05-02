@@ -3,3 +3,5 @@
 Description goes here
 
 rake redmine:plugins:migrate
+
+Generate configuration
