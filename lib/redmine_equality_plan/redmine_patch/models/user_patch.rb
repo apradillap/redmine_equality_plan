@@ -6,13 +6,13 @@ module RedmineEqualityPlan
           scope :male, proc {
             gender_custom_field_id = CustomField.gender_custom_field_id
             male_ids = CustomField.find(gender_custom_field_id).custom_values.where(value: 'male').map(&:customized_id)
-            User.where(id: male_ids)
+            User.where(type: 'User').active.where(id: male_ids)
           }
 
           scope :female, proc {
             gender_custom_field_id = CustomField.gender_custom_field_id
             female_ids = CustomField.find(gender_custom_field_id).custom_values.where(value: 'female').map(&:customized_id)
-            User.where(id: female_ids)
+            User.where(type: 'User').active.where(id: female_ids)
           }
 
           def gender
