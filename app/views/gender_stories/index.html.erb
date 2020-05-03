@@ -1,34 +1,76 @@
 <h2><%= l(:label_gender_statistics) %></h2>
 
-<div class="autoscroll">
-<table class="list users">
-  <thead>
-    <tr>
-      <th><%= l(:label_gender) %></th>
-      <th><%= l(:label_total) %></th>
-      <th><%= l(:label_percentage) %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <%= l(:label_male) %>
-      </td>
-      <td>
-        <%= User.male.count %>
-      </td>
-      <td>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= l(:label_female) %>
-      </td>
-      <td>
-        <%= User.female.count %>
-      </td>
-      <td>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="splitcontentright">
+  <table class="list users">
+    <thead>
+      <tr>
+        <th><%= l(:label_gender) %></th>
+        <th><%= l(:label_total) %></th>
+        <th><%= l(:label_percentage) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <%= l(:label_male) %>
+        </td>
+        <td>
+          <%= User.male.count %>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= l(:label_female) %>
+        </td>
+        <td>
+          <%= User.female.count %>
+        </td>
+        <td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="splitcontentleft">
+  <canvas id="genderChart" width="50" height="50"></canvas>
+<div>
+
+<script>
+  var ctx = document.getElementById('genderChart').getContext('2d');
+
+  data = {
+      datasets: [{
+          data: [<%= User.female.count %>, <%= User.male.count %>],
+          backgroundColor: ['#4633FF','#FF333F']
+      }],
+      // These labels appear in the legend and in the tooltips when hovering different arcs
+      labels: [
+          '<%= l(:label_female) %>',
+          '<%= l(:label_male) %>'
+      ]
+  };
+
+  var myPieChart = new Chart(ctx, {
+      type: 'pie',
+      data: data,
+      options: {
+          elements: {
+            rectangle: {borderWidth: 2}
+          },
+          responsive: true,
+          legend: {position: 'right'},
+          title: {
+            display: true,
+            text: '<%= l(:label_gender_statistics) %>'
+          }
+        }
+  });
+</script>
+
+<% content_for :header_tags do %>
+  <%= javascript_include_tag "Chart.bundle.min" %>
+<% end %>
