@@ -1,8 +1,8 @@
-= Redmine Equality Plan
+# Redmine Equality Plan
 
 With this redmine plugin we want to quickly add an "Equality Plan" to companies using redmine.
 
-== Installation
+## Installation
 1. To run the migrations run:
   ```
   rake redmine:plugins:migrate
@@ -11,10 +11,10 @@ With this redmine plugin we want to quickly add an "Equality Plan" to companies 
   ```
   cp config/configuration.yml.example config/configuration.yml
   ```
-2. It defines the id of the Custom Field that will reflect the gender of the user in
+3. It defines the id of the Custom Field that will reflect the gender of the user in
    config/configuration.yml
 
-== Libraries/gems being used
+## Libraries/gems being used
 
 * Gems: See [Gemfile](https://github.com/apradillap/redmine_equality_plan/blob/master/Gemfile) for complete reference
 * Other (CSS, JS): #ToDo (browse source meanwhile ;)
