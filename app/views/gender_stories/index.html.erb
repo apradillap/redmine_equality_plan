@@ -39,8 +39,10 @@
   <canvas id="genderChart" width="50" height="50"></canvas>
 <div>
 
+<canvas id="genderStory" width="50" height="50"></canvas>
+
 <script>
-  var ctx = document.getElementById('genderChart').getContext('2d');
+  var ctxGenderChart = document.getElementById('genderChart').getContext('2d');
 
   data = {
       datasets: [{
@@ -54,7 +56,7 @@
       ]
   };
 
-  var myPieChart = new Chart(ctx, {
+  var myPieChart = new Chart(ctxGenderChart, {
       type: 'pie',
       data: data,
       options: {
@@ -67,6 +69,46 @@
             display: true,
             text: '<%= l(:label_gender_statistics) %>'
           }
+        }
+  });
+
+  var ctxGenderStory = document.getElementById('genderStory').getContext('2d');
+
+  barChartData = {
+      labels: <%= raw @months %>,
+      datasets: [{
+				label: '<%= l(:label_female) %>',
+				backgroundColor: '#4633FF',
+				data: <%= GenderStory.all.map(&:female_count)%>
+			},
+      {
+				label: '<%= l(:label_male) %>',
+				backgroundColor: '#FF333F',
+				data: <%= GenderStory.all.map(&:male_count)%>
+			}]
+  };
+
+  var stackedChart = new Chart(ctxGenderStory, {
+      type: 'bar',
+      data: barChartData,
+      options: {
+          elements: {
+            rectangle: {borderWidth: 2}
+          },
+          responsive: true,
+          legend: {position: 'right'},
+          title: {
+            display: true,
+            text: '<%= l(:label_gender_statistics) %>'
+          },
+          scales: {
+						xAxes: [{
+							stacked: true,
+						}],
+						yAxes: [{
+							stacked: true
+						}]
+					}
         }
   });
 </script>
