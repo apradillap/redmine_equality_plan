@@ -47,7 +47,7 @@
   data = {
       datasets: [{
           data: [<%= User.female.count %>, <%= User.male.count %>],
-          backgroundColor: ['#4633FF','#FF333F']
+          backgroundColor: ['#FF333F','#4633FF']
       }],
       // These labels appear in the legend and in the tooltips when hovering different arcs
       labels: [
@@ -78,12 +78,12 @@
       labels: <%= raw @months %>,
       datasets: [{
 				label: '<%= l(:label_female) %>',
-				backgroundColor: '#4633FF',
+				backgroundColor: '#FF333F',
 				data: <%= GenderStory.all.map(&:female_count)%>
 			},
       {
 				label: '<%= l(:label_male) %>',
-				backgroundColor: '#FF333F',
+				backgroundColor: '#4633FF',
 				data: <%= GenderStory.all.map(&:male_count)%>
 			}]
   };

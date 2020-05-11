@@ -2,7 +2,7 @@ namespace :gender do
   desc "Save in custom field gender user."
   task populate_user_gender: :environment do
     # TODO Change User.all
-    User.where(type: 'User').active.each do |user|
+    User.in_company.each do |user|
       custom_value = user.gender_custom_field.find_or_create_by(value: user.gender)
     end
   end
@@ -21,8 +21,8 @@ namespace :gender do
 
     dates.each do |month|
       puts 'Month ' + month.first.to_s[0..6]
-      female_count = User.where(type: 'User').active.female.where("created_on < ?::date AND updated_on > ?::date", month.last, month.first).size
-      male_count = User.where(type: 'User').active.male.where("created_on < ?::date AND updated_on > ?::date", month.last, month.first).size
+      female_count = User.in_company.female.where("created_on < ?::date AND updated_on > ?::date", month.last, month.first).size
+      male_count = User.in_company.male.where("created_on < ?::date AND updated_on > ?::date", month.last, month.first).size
       GenderStory.create(female_count: female_count,
                          male_count: male_count,
                          registered_on: month.first.to_date)
