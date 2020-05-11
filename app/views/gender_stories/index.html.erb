@@ -1,45 +1,119 @@
 <h2><%= l(:label_gender_statistics) %></h2>
 
-<div class="splitcontentright">
-  <table class="list users">
-    <thead>
-      <tr>
-        <th><%= l(:label_gender) %></th>
-        <th><%= l(:label_total) %></th>
-        <th><%= l(:label_percentage) %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <%= l(:label_male) %>
-        </td>
-        <td>
-          <%= User.male.count %>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= l(:label_female) %>
-        </td>
-        <td>
-          <%= User.female.count %>
-        </td>
-        <td>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="splitcontent">
+  <div class="splitcontentright">
+    <table class="list users">
+      <thead>
+        <tr>
+          <th><%= l(:label_gender) %></th>
+          <th><%= l(:label_total) %></th>
+          <th><%= l(:label_percentage) %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= l(:label_male) %>
+          </td>
+          <td>
+            <%= User.male.count %>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= l(:label_female) %>
+          </td>
+          <td>
+            <%= User.female.count %>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="splitcontentleft">
+    <canvas id="genderChart" width="20" height="20"></canvas>
+  </div>
+</div>
+
+<div class="splitcontent">
+  <div class="splitcontentleft">
+    <canvas id="genderStory" width="150" height="50"></canvas>
+  </div>
+
+  <div class="splitcontentright">
+  </div>
+
+
+</div>
+
+<h2><%= l(:label_group_statistics) %></h2>
+
+<div class="splitcontent">
+  <div class="splitcontentleft">
+    <table class="list users">
+      <thead>
+        <tr>
+          <th><%= l(:label_group) %></th>
+          <th><%= l(:label_total) %></th>
+          <th><%= l(:label_female) %></th>
+          <th><%= l(:label_male) %></th>
+          <th><%= l(:label_female_pertcentage) %></th>
+          <th><%= l(:label_male_pertcentage) %></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <% Group.all.each do |group| %>
+          <% if group.users.count > 1 %>
+            <tr>
+              <td>
+                <%= group.lastname %>
+              </td>
+              <td>
+                <%= group.users.count %>
+              </td>
+              <td>
+                <%= group.users.female.count %>
+              </td>
+              <td>
+                <%= group.users.male.count %>
+              </td>
+              <td>
+                <%= (group.users.female.count.to_f/group.users.count*100).round(2) %>
+              </td>
+              <td>
+                <%= (group.users.male.count.to_f/group.users.count*100).round(2) %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="splitcontentright">
+    <%
+      groups = Group.left_joins(:users).group(:id).order('COUNT(users.id) DESC').limit(10)
+      female_pertcentage = groups.map {|group| (group.users.female.count.to_f/group.users.count*100).round(2) }
+      male_pertcentage = groups.map {|group| (group.users.male.count.to_f/group.users.count*100).round(2) }
+    %>
+    <canvas id="genderGroupsChart" width="100" height="100"></canvas>
+
+  </div>
 </div>
 
 
-<div class="splitcontentleft">
-  <canvas id="genderChart" width="50" height="50"></canvas>
-<div>
 
-<canvas id="genderStory" width="50" height="50"></canvas>
+
+
+
+
 
 <script>
   var ctxGenderChart = document.getElementById('genderChart').getContext('2d');
@@ -111,6 +185,46 @@
 					}
         }
   });
+
+  var groupBarChartData = {
+    labels: <%= raw groups.map(&:lastname) %>,
+    datasets: [{
+      label: '<%= l(:label_female) %>',
+      backgroundColor: '#FF333F',
+      borderColor: '#FF333F',
+      borderWidth: 1,
+      data: <%= female_pertcentage %>
+    }, {
+      label: '<%= l(:label_male) %>',
+      backgroundColor: '#4633FF',
+      borderColor: '#4633FF',
+      data: <%= male_pertcentage %>
+    }]
+
+  };
+  var ctxGroupChart = document.getElementById('genderGroupsChart').getContext('2d');
+			window.myHorizontalBar = new Chart(ctxGroupChart, {
+				type: 'horizontalBar',
+				data: groupBarChartData,
+				options: {
+					// Elements options apply to all of the options unless overridden in a dataset
+					// In this case, we are setting the border of each horizontal bar to be 2px wide
+					elements: {
+						rectangle: {
+							borderWidth: 2,
+						}
+					},
+					responsive: true,
+					legend: {
+						position: 'right',
+					},
+					title: {
+						display: true,
+						text: 'Chart.js Horizontal Bar Chart'
+					}
+				}
+			});
+
 </script>
 
 <% content_for :header_tags do %>
