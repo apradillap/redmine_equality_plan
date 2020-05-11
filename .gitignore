@@ -1,1 +1,2 @@
 config/configuration.yml
+lib/redmine_equality_plan/redmine_patch/models/user_custom_patch.rb
