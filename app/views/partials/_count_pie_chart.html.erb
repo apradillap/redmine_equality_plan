@@ -1,0 +1,35 @@
+<canvas id="genderChart" width="20" height="20"></canvas>
+
+<script>
+  
+  var ctxGenderChart = document.getElementById('genderChart').getContext('2d');
+
+  data = {
+      datasets: [{
+          data: [<%= female_users.count %>, <%= male_users.count %>],
+          backgroundColor: ['#FF333F','#4633FF']
+      }],
+      // These labels appear in the legend and in the tooltips when hovering different arcs
+      labels: [
+          '<%= l(:label_female) %>',
+          '<%= l(:label_male) %>'
+      ]
+  };
+
+  var myPieChart = new Chart(ctxGenderChart, {
+      type: 'pie',
+      data: data,
+      options: {
+          elements: {
+            rectangle: {borderWidth: 2}
+          },
+          responsive: true,
+          legend: {position: 'right'},
+          title: {
+            display: true,
+            text: '<%= l(:label_gender_statistics) %>'
+          }
+        }
+  });
+
+</script>
