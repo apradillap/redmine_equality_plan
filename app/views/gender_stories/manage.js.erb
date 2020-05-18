@@ -1,0 +1,4 @@
+$('#list_andy').replaceWith("<%= j render 'partials/andy_users', {users: @users} %>");
+$('#count_table').replaceWith("<%= j render 'partials/count_table', {male_users: @male_users, female_users: @female_users} %>");
+$('#genderChart').replaceWith("<%= j render 'partials/count_pie_chart', {male_users: @male_users, female_users: @female_users} %>");
+$('#genderStory').replaceWith("<%= j render 'partials/count_year_barChart', {male_users_count: @male_users_count, female_users_count: @female_users_count, months: @months} %>");

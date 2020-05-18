@@ -1,0 +1,28 @@
+<%
+  gender = [["Andy", "andy"], ["Female", "female"], ["Male", "male"]]
+%>
+
+<table id="list_andy">
+  <thead>
+    <tr>
+      <th><%= l(:label_user) %></th>
+      <th><%= l(:label_change) %></th>
+      <th><%= l(:label_apply) %></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% users.each do |u| %>
+      <tr>
+        <td>
+          <%= u.name %>
+        </td>
+        <td>
+          <%= select_tag 'gender_'+u.id.to_s, options_for_select(gender), {:include_blank => false, :label => 'Select gender'} %>
+        </td><td>
+          <%= button_tag 'Apply', {id: u.id, onclick: 'manage(this)'} %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

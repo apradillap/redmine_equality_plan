@@ -2,48 +2,28 @@
 
 <div class="splitcontent">
   <div class="splitcontentright">
-    <table class="list users">
-      <thead>
-        <tr>
-          <th><%= l(:label_gender) %></th>
-          <th><%= l(:label_total) %></th>
-          <th><%= l(:label_percentage) %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <%= l(:label_male) %>
-          </td>
-          <td>
-            <%= User.male.count %>
-          </td>
-          <td>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <%= l(:label_female) %>
-          </td>
-          <td>
-            <%= User.female.count %>
-          </td>
-          <td>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <%= male_users = User.male
+  female_users = User.female
+  render 'partials/count_table', {male_users: male_users, female_users: female_users}%>
+  
+  <br><br>
+
+  <%= users = User.andy.all 
+  render 'partials/andy_users', {users: users}%> 
 
   </div>
 
   <div class="splitcontentleft">
-    <canvas id="genderChart" width="20" height="20"></canvas>
+    <%= render 'partials/count_pie_chart', {male_users: male_users, female_users: female_users}%>
   </div>
+  
 </div>
 
 <div class="splitcontent">
   <div class="splitcontentleft">
-    <canvas id="genderStory" width="150" height="50"></canvas>
+    <%= male_users_count = GenderStory.all.map(&:male_count)
+    female_users_count = GenderStory.all.map(&:female_count)
+    render 'partials/count_year_barChart', {male_users_count: male_users_count, female_users_count: female_users_count, months: @months}%>
   </div>
 
   <div class="splitcontentright">
@@ -116,75 +96,17 @@
 
 
 <script>
-  var ctxGenderChart = document.getElementById('genderChart').getContext('2d');
 
-  data = {
-      datasets: [{
-          data: [<%= User.female.count %>, <%= User.male.count %>],
-          backgroundColor: ['#FF333F','#4633FF']
-      }],
-      // These labels appear in the legend and in the tooltips when hovering different arcs
-      labels: [
-          '<%= l(:label_female) %>',
-          '<%= l(:label_male) %>'
-      ]
+  function manage(user) {
+    var id = user.id;
+    var gender = $('#gender_'+(id)).val();
+    console.log(gender);
+
+    $.ajax({
+       url: "/gender_stories_manage",
+       data: new URLSearchParams({'id': id, 'gender': gender}).toString()
+    })    
   };
-
-  var myPieChart = new Chart(ctxGenderChart, {
-      type: 'pie',
-      data: data,
-      options: {
-          elements: {
-            rectangle: {borderWidth: 2}
-          },
-          responsive: true,
-          legend: {position: 'right'},
-          title: {
-            display: true,
-            text: '<%= l(:label_gender_statistics) %>'
-          }
-        }
-  });
-
-  var ctxGenderStory = document.getElementById('genderStory').getContext('2d');
-
-  barChartData = {
-      labels: <%= raw @months %>,
-      datasets: [{
-				label: '<%= l(:label_female) %>',
-				backgroundColor: '#FF333F',
-				data: <%= GenderStory.all.map(&:female_count)%>
-			},
-      {
-				label: '<%= l(:label_male) %>',
-				backgroundColor: '#4633FF',
-				data: <%= GenderStory.all.map(&:male_count)%>
-			}]
-  };
-
-  var stackedChart = new Chart(ctxGenderStory, {
-      type: 'bar',
-      data: barChartData,
-      options: {
-          elements: {
-            rectangle: {borderWidth: 2}
-          },
-          responsive: true,
-          legend: {position: 'right'},
-          title: {
-            display: true,
-            text: '<%= l(:label_gender_statistics) %>'
-          },
-          scales: {
-						xAxes: [{
-							stacked: true,
-						}],
-						yAxes: [{
-							stacked: true
-						}]
-					}
-        }
-  });
 
   var groupBarChartData = {
     labels: <%= raw groups.map(&:lastname) %>,

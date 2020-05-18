@@ -1,0 +1,33 @@
+<table id="count_table">
+  <thead>
+    <tr>
+      <th><%= l(:label_gender) %></th>
+      <th><%= l(:label_total) %></th>
+      <th><%= l(:label_percentage) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= l(:label_male) %>
+      </td>
+      <td>
+        <%= male_users.count %>
+      </td>
+      <td>
+        <%= ((male_users.count.to_f / User.in_company.count).round(2)).to_s + "%" %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= l(:label_female) %>
+      </td>
+      <td>
+        <%= female_users.count %>
+      </td>
+      <td>
+        <%= ((female_users.count.to_f / User.in_company.count).round(2)).to_s + "%" %>
+      </td>
+    </tr>
+  </tbody>
+</table>

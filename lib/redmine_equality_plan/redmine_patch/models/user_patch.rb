@@ -19,6 +19,13 @@ module RedmineEqualityPlan
             User.in_company.where(id: female_ids)
           }
 
+           scope :andy, proc {
+            gender_custom_field_id = CustomField.gender_custom_field_id
+            andy_ids = CustomField.find(gender_custom_field_id).custom_values.where(value: 'andy').map(&:customized_id)
+            User.in_company.where(id: andy_ids)
+          }
+
+
           def gender
             d = GenderDetector.new
             d.get_gender(self.firstname, :spain).to_s.gsub('mostly_','')
