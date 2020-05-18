@@ -18,6 +18,8 @@ With this redmine plugin we want to quickly add an "Equality Plan" to companies 
 
 5. Execute populate_user_gender and populate_gender_stories tasks
 
+6.
+
 ## Libraries/gems being used
 
 * Gems: See [Gemfile](https://github.com/apradillap/redmine_equality_plan/blob/master/Gemfile) for complete reference
