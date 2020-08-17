@@ -1,3 +1,9 @@
+(Rails::VERSION::MAJOR < 5 ? ActionDispatch : ActiveSupport)::Reloader.to_prepare do
+  User.include RedmineEqualityPlan::RedminePatch::UserPatch
+  User.include RedmineEqualityPlan::RedminePatch::UserCustomPatch
+  CustomField.include RedmineEqualityPlan::RedminePatch::CustomFieldPatch
+end
+
 Redmine::Plugin.register :redmine_equality_plan do
   name 'Redmine Equality Plan plugin'
   author 'Author name'
