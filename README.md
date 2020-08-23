@@ -17,8 +17,20 @@ With this redmine plugin we want to quickly add an "Equality Plan" to companies 
 4. Define custom values and custom method (view example files)
 
 5. Execute populate_user_gender and populate_gender_stories tasks
+```
+rake gender:populate_user_gender
+rake gender:populate_gender_stories
+```
 
-6.
+6. Access to /gender_stories
+
+## Compatibility
+
+* Redmine 4.1.1 (2020-04-06)
+* Easy Redmine from 7.06 to 10.3.1 (2020-06-24)
+
+It will probably be compatible with previous versions of Redmine. If you try it, let us know
+
 
 ## Libraries/gems being used
 
