@@ -1,5 +1,6 @@
 # Spanish strings go here for Rails i18n
 es:
+  label_age_and_gender: Empleados por edades y género
   label_female: Mujeres
   label_gender: Género
   label_gender_statistics: Estadísticas de género
