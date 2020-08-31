@@ -5,18 +5,18 @@
   <%= male_users = User.male
   female_users = User.female
   render 'partials/count_table', {male_users: male_users, female_users: female_users}%>
-  
+
   <br><br>
 
-  <%= users = User.andy.all 
-  render 'partials/andy_users', {users: users}%> 
+  <%= users = User.andy.all
+  render 'partials/andy_users', {users: users}%>
 
   </div>
 
   <div class="splitcontentleft">
     <%= render 'partials/count_pie_chart', {male_users: male_users, female_users: female_users}%>
   </div>
-  
+
 </div>
 
 <div class="splitcontent">
@@ -88,12 +88,35 @@
   </div>
 </div>
 
+<%
+  # Trabajadores por edad
 
+  ages = ['16-19', '20-29', '30-39', '40-49', '50-59', '60-80']
 
+  female_age_ranges = [User.for_age_range(16, 19).female.size,
+                       User.for_age_range(20, 29).female.size,
+                       User.for_age_range(30, 39).female.size,
+                       User.for_age_range(40, 49).female.size,
+                       User.for_age_range(50, 59).female.size,
+                       User.for_age_range(60, 80).female.size]
 
+  male_age_ranges = [User.for_age_range(16, 19).male.size,
+                     User.for_age_range(20, 29).male.size,
+                     User.for_age_range(30, 39).male.size,
+                     User.for_age_range(40, 49).male.size,
+                     User.for_age_range(50, 59).male.size,
+                     User.for_age_range(60, 80).male.size]
+%>
 
-
-
+<div class="splitcontent">
+  <div class="splitcontentleft">
+    <h2><%= l(:label_age_and_gender) %></h2>
+    
+    <canvas id="genderAgeChart" width="100" height="100"></canvas>
+  </div>
+  <div class="splitcontentright">
+  </div>
+</div>
 
 <script>
 
@@ -105,7 +128,7 @@
     $.ajax({
        url: "/gender_stories_manage",
        data: new URLSearchParams({'id': id, 'gender': gender}).toString()
-    })    
+    })
   };
 
   var groupBarChartData = {
@@ -146,6 +169,45 @@
 					}
 				}
 			});
+
+      var ageBarChartData = {
+        labels: <%= raw ages %>,
+        datasets: [{
+          label: '<%= l(:label_female) %>',
+          backgroundColor: '#FF333F',
+          borderColor: '#FF333F',
+          borderWidth: 1,
+          data: <%= female_age_ranges %>
+        }, {
+          label: '<%= l(:label_male) %>',
+          backgroundColor: '#4633FF',
+          borderColor: '#4633FF',
+          data: <%= male_age_ranges %>
+        }]
+
+      };
+      var ctxAgeChart = document.getElementById('genderAgeChart').getContext('2d');
+    			window.myHorizontalBar = new Chart(ctxAgeChart, {
+    				type: 'horizontalBar',
+    				data: ageBarChartData,
+    				options: {
+    					// Elements options apply to all of the options unless overridden in a dataset
+    					// In this case, we are setting the border of each horizontal bar to be 2px wide
+    					elements: {
+    						rectangle: {
+    							borderWidth: 2,
+    						}
+    					},
+    					responsive: true,
+    					legend: {
+    						position: 'right',
+    					},
+    					title: {
+    						display: true,
+    						text: 'Age ranges Bar Chart'
+    					}
+    				}
+    			});
 
 </script>
 
