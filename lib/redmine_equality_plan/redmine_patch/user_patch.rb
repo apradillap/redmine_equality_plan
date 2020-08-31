@@ -37,6 +37,10 @@ module RedmineEqualityPlan
         scope :for_age_range, -> min, max {
           User.active.in_company.for_age_range_custom(min,max)
         }
+
+        scope :for_contract_date_range, -> min, max {
+          User.active.in_company.for_contract_date_range_custom(min,max)
+        }
       end
     end
   end

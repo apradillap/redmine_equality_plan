@@ -111,8 +111,50 @@
 <div class="splitcontent">
   <div class="splitcontentleft">
     <h2><%= l(:label_age_and_gender) %></h2>
-    
+
     <canvas id="genderAgeChart" width="100" height="100"></canvas>
+  </div>
+  <div class="splitcontentright">
+  </div>
+</div>
+
+<%
+  # Years in company
+
+  years = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10-14', '15-20']
+
+  female_years_ranges = [User.for_contract_date_range(0,0).female.size,
+                         User.for_contract_date_range(1,1).female.size,
+                         User.for_contract_date_range(2,2).female.size,
+                         User.for_contract_date_range(3,3).female.size,
+                         User.for_contract_date_range(4,4).female.size,
+                         User.for_contract_date_range(5,5).female.size,
+                         User.for_contract_date_range(6,6).female.size,
+                         User.for_contract_date_range(7,7).female.size,
+                         User.for_contract_date_range(8,8).female.size,
+                         User.for_contract_date_range(9,9).female.size,
+                         User.for_contract_date_range(10,14).female.size,
+                         User.for_contract_date_range(15,20).female.size]
+
+   male_years_ranges = [User.for_contract_date_range(0,0).male.size,
+                        User.for_contract_date_range(1,1).male.size,
+                        User.for_contract_date_range(2,2).male.size,
+                        User.for_contract_date_range(3,3).male.size,
+                        User.for_contract_date_range(4,4).male.size,
+                        User.for_contract_date_range(5,5).male.size,
+                        User.for_contract_date_range(6,6).male.size,
+                        User.for_contract_date_range(7,7).male.size,
+                        User.for_contract_date_range(8,8).male.size,
+                        User.for_contract_date_range(9,9).male.size,
+                        User.for_contract_date_range(10,14).male.size,
+                        User.for_contract_date_range(15,20).male.size]
+%>
+
+<div class="splitcontent">
+  <div class="splitcontentleft">
+    <h2><%= l(:label_years_in_company) %></h2>
+
+    <canvas id="yearsInCompanyChart" width="100" height="100"></canvas>
   </div>
   <div class="splitcontentright">
   </div>
@@ -170,44 +212,83 @@
 				}
 			});
 
-      var ageBarChartData = {
-        labels: <%= raw ages %>,
-        datasets: [{
-          label: '<%= l(:label_female) %>',
-          backgroundColor: '#FF333F',
-          borderColor: '#FF333F',
-          borderWidth: 1,
-          data: <%= female_age_ranges %>
-        }, {
-          label: '<%= l(:label_male) %>',
-          backgroundColor: '#4633FF',
-          borderColor: '#4633FF',
-          data: <%= male_age_ranges %>
-        }]
+  var ageBarChartData = {
+    labels: <%= raw ages %>,
+    datasets: [{
+      label: '<%= l(:label_female) %>',
+      backgroundColor: '#FF333F',
+      borderColor: '#FF333F',
+      borderWidth: 1,
+      data: <%= female_age_ranges %>
+    }, {
+      label: '<%= l(:label_male) %>',
+      backgroundColor: '#4633FF',
+      borderColor: '#4633FF',
+      data: <%= male_age_ranges %>
+    }]
 
-      };
-      var ctxAgeChart = document.getElementById('genderAgeChart').getContext('2d');
-    			window.myHorizontalBar = new Chart(ctxAgeChart, {
-    				type: 'horizontalBar',
-    				data: ageBarChartData,
-    				options: {
-    					// Elements options apply to all of the options unless overridden in a dataset
-    					// In this case, we are setting the border of each horizontal bar to be 2px wide
-    					elements: {
-    						rectangle: {
-    							borderWidth: 2,
-    						}
-    					},
-    					responsive: true,
-    					legend: {
-    						position: 'right',
-    					},
-    					title: {
-    						display: true,
-    						text: 'Age ranges Bar Chart'
-    					}
-    				}
-    			});
+  };
+  var ctxAgeChart = document.getElementById('genderAgeChart').getContext('2d');
+			window.myHorizontalBar = new Chart(ctxAgeChart, {
+				type: 'horizontalBar',
+				data: ageBarChartData,
+				options: {
+					// Elements options apply to all of the options unless overridden in a dataset
+					// In this case, we are setting the border of each horizontal bar to be 2px wide
+					elements: {
+						rectangle: {
+							borderWidth: 2,
+						}
+					},
+					responsive: true,
+					legend: {
+						position: 'right',
+					},
+					title: {
+						display: true,
+						text: 'Age ranges Bar Chart'
+					}
+				}
+			});
+
+  var yearsBarChartData = {
+    labels: <%= raw years %>,
+    datasets: [{
+      label: '<%= l(:label_female) %>',
+      backgroundColor: '#FF333F',
+      borderColor: '#FF333F',
+      borderWidth: 1,
+      data: <%= female_years_ranges %>
+    }, {
+      label: '<%= l(:label_male) %>',
+      backgroundColor: '#4633FF',
+      borderColor: '#4633FF',
+      data: <%= male_years_ranges %>
+    }]
+
+  };
+  var ctxYearsChart = document.getElementById('yearsInCompanyChart').getContext('2d');
+			window.myHorizontalBar = new Chart(ctxYearsChart, {
+				type: 'horizontalBar',
+				data: yearsBarChartData,
+				options: {
+					// Elements options apply to all of the options unless overridden in a dataset
+					// In this case, we are setting the border of each horizontal bar to be 2px wide
+					elements: {
+						rectangle: {
+							borderWidth: 2,
+						}
+					},
+					responsive: true,
+					legend: {
+						position: 'right',
+					},
+					title: {
+						display: true,
+						text: 'Years in Company Bar Chart'
+					}
+				}
+			});
 
 </script>
 
