@@ -26,7 +26,7 @@ rake gender:populate_gender_stories
 
 6. Access to /gender_stories
 
-## Compatibility
+## Compatibility
 
 * Redmine 4.1.1 (2020-04-06)
 * Easy Redmine from 7.06 to 10.3.1 (2020-06-24)
