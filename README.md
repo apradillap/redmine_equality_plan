@@ -2,6 +2,8 @@
 
 With this redmine plugin we want to quickly add an "Equality Plan" to companies using redmine.
 
+<a href="https://codeclimate.com/github/apradillap/redmine_equality_plan/maintainability"><img src="https://api.codeclimate.com/v1/badges/75bc2ecffcb7e3b4cc91/maintainability" /></a>
+
 ## Installation
 1. To run the migrations run:
   ```
