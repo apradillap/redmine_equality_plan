@@ -16,15 +16,20 @@ With this redmine plugin we want to quickly add an "Equality Plan" to companies 
 3. It defines the id of the Custom Field that will reflect the gender of the user in
    config/configuration.yml
 
-4. Define custom values and custom method (view example files)
+4. Generates the user custom patch:
+```
+cp lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb.example lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb
+```
 
-5. Execute populate_user_gender and populate_gender_stories tasks
+5. Define custom values and custom method (view example files)
+
+6. Execute populate_user_gender and populate_gender_stories tasks
 ```
 rake gender:populate_user_gender
 rake gender:populate_gender_stories
 ```
 
-6. Access to /gender_stories
+7. Access to /gender_stories
 
 ## Compatibility
 
@@ -38,3 +43,8 @@ It will probably be compatible with previous versions of Redmine. If you try it,
 
 * Gems: See [Gemfile](https://github.com/apradillap/redmine_equality_plan/blob/master/Gemfile) for complete reference
 * Other (CSS, JS): #ToDo (browse source meanwhile ;)
+
+## Tests
+```
+rake test TEST=plugins/redmine_equality_plan/test/unit/gender_story_test.rb
+```
