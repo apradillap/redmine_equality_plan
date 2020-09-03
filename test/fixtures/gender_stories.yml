@@ -1,0 +1,15 @@
+gender_story_001:
+  id: 1
+  female_count: 5
+  male_count: 5
+  registered_on: <%= 50.days.ago.to_date.to_s(:db) %>
+  created_at: <%= 50.days.ago.to_s(:db) %>
+  updated_at: <%= 50.days.ago.to_s(:db) %>
+
+gender_story_002:
+  id: 2
+  female_count: 10
+  male_count: 10
+  registered_on: <%= 2.days.ago.to_date.to_s(:db) %>
+  created_at: <%= 2.days.ago.to_s(:db) %>
+  updated_at: <%= 2.days.ago.to_s(:db) %>
