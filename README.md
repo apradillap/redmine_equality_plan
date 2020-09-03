@@ -48,3 +48,6 @@ It will probably be compatible with previous versions of Redmine. If you try it,
 ```
 rake test TEST=plugins/redmine_equality_plan/test/unit/gender_story_test.rb
 ```
+
+## Travis integration
+https://github.com/alexbevi/redmine_plugins_travis-ci
