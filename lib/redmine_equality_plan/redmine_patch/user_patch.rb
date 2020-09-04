@@ -1,6 +1,10 @@
 module RedmineEqualityPlan
   module RedminePatch
     module UserPatch
+      def self.apply
+        User.prepend self unless User < self
+      end
+
       User.class_eval do
         scope :in_company, proc {
           User.in_company_custom

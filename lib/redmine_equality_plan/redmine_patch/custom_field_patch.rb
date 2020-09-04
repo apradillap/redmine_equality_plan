@@ -1,6 +1,10 @@
 module RedmineEqualityPlan
   module RedminePatch
     module CustomFieldPatch
+      def self.apply
+        CustomField.prepend self unless CustomField < self
+      end
+
       CustomField.class_eval do
         def self.gender_custom_field_id
           YAML.load_file('plugins/redmine_equality_plan/config/configuration.yml')['gender_custom_field_id']
