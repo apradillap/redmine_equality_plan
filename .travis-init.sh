@@ -114,10 +114,10 @@ run_install() {
 
   bundle install --path vendor/bundle
 
-  bundle exec rake $MIGRATE_PLUGINS $TRACE
-
   # create user custom patch
   cp $PATH_TO_PLUGINS/$PLUGIN/lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb.example $PATH_TO_PLUGINS/$PLUGIN/lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb
+
+  bundle exec rake $MIGRATE_PLUGINS $TRACE
 }
 
 while getopts :irtu opt
