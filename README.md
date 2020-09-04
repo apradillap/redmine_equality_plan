@@ -44,7 +44,8 @@ It will probably be compatible with previous versions of Redmine. If you try it,
 * Gems: See [Gemfile](https://github.com/apradillap/redmine_equality_plan/blob/master/Gemfile) for complete reference
 * Other (CSS, JS): #ToDo (browse source meanwhile ;)
 
-## Tests
+## Tests
+
 ```
 rake test TEST=plugins/redmine_equality_plan/test/unit/gender_story_test.rb
 ```
