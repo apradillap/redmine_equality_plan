@@ -96,16 +96,15 @@ run_install() {
 
   # install gems
   mkdir -p vendor/bundle
-  bundle install --path vendor/bundle --without test
+  bundle install --path vendor/bundle
 
-  # create user custom patch
-  cp $PATH_TO_PLUGINS/$PLUGIN/lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb.example $PATH_TO_PLUGINS/$PLUGIN/lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb
-
-  bundle exec rake $MIGRATE_PLUGINS $TRACE
   bundle exec rake db:migrate $TRACE
   bundle exec rake redmine:load_default_data REDMINE_LANG=en $TRACE
   bundle exec rake $GENERATE_SECRET $TRACE
   bundle exec rake $MIGRATE_PLUGINS $TRACE
+
+  # create user custom patch
+  cp $PATH_TO_PLUGINS/$PLUGIN/lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb.example $PATH_TO_PLUGINS/$PLUGIN/lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb
 }
 
 while getopts :irtu opt
