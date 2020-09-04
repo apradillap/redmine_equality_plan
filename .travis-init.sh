@@ -84,7 +84,17 @@ run_install() {
   # cd to redmine folder
   cd $PATH_TO_REDMINE
 
+  # create a link to the plugin, but avoid recursive link.
+  if [ -L "$PATH_TO_PLUGINS/$PLUGIN" ]; then rm "$PATH_TO_PLUGINS/$PLUGIN"; fi
+  ln -s "$PATH_TO_PLUGIN" "$PATH_TO_PLUGINS/$PLUGIN"
+
+  if [ "$VERBOSE" = "yes" ]; then
+    export TRACE=--trace
+  fi
+
   cp $PATH_TO_PLUGINS/$PLUGIN/.travis-database.yml config/database.yml
+
+  rm -rf $PATH_TO_PLUGINS/$PLUGIN
 
   # install gems
   mkdir -p vendor/bundle
