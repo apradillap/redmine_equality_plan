@@ -3,7 +3,7 @@ rvm:
   - ruby-2.6.3
 branches:
   only:
-    - testing
+    - master
 env:
   - REDMINE_VERSION=4.1.1 VERBOSE=yes
 script:
