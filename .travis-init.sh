@@ -84,14 +84,6 @@ run_install() {
   # cd to redmine folder
   cd $PATH_TO_REDMINE
 
-  # create a link to the plugin, but avoid recursive link.
-  if [ -L "$PATH_TO_PLUGINS/$PLUGIN" ]; then rm "$PATH_TO_PLUGINS/$PLUGIN"; fi
-  ln -s "$PATH_TO_PLUGIN" "$PATH_TO_PLUGINS/$PLUGIN"
-
-  if [ "$VERBOSE" = "yes" ]; then
-    export TRACE=--trace
-  fi
-
   cp $PATH_TO_PLUGINS/$PLUGIN/.travis-database.yml config/database.yml
 
   # install gems
@@ -101,6 +93,17 @@ run_install() {
   bundle exec rake db:migrate $TRACE
   bundle exec rake redmine:load_default_data REDMINE_LANG=en $TRACE
   bundle exec rake $GENERATE_SECRET $TRACE
+
+  # create a link to the plugin, but avoid recursive link.
+  if [ -L "$PATH_TO_PLUGINS/$PLUGIN" ]; then rm "$PATH_TO_PLUGINS/$PLUGIN"; fi
+  ln -s "$PATH_TO_PLUGIN" "$PATH_TO_PLUGINS/$PLUGIN"
+
+  if [ "$VERBOSE" = "yes" ]; then
+    export TRACE=--trace
+  fi
+
+  bundle install --path vendor/bundle
+
   bundle exec rake $MIGRATE_PLUGINS $TRACE
 
   # create user custom patch
