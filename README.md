@@ -1,38 +1,48 @@
-# Redmine Equality Plan
+<img src="https://github.com/apradillap/redmine_equality_plan/blob/master/assets/images/equality.png" width="250" height="auto">
 
-With this redmine plugin we want to quickly add an "Equality Plan" to companies using redmine.
+# Redmine Plan de Igualdad
 
-## Installation
-1. To run the migrations run:
+_This README is available [in English](README_EN.md)_
+
+Con este plugin para Redmine, queremos poner la primera piedra para fomentar la
+igualdad en las empresas que utilizan este software de gestión de proyectos.
+
+Y no solo la igualdad de género se puede visualizar con este plugin, también se podrá
+utilizar para visibilizar desigualdades de etnia, idioma, religión o color.
+
+
+## Instalación
+1. Ejecutar las migraciones:
   ```
   rake redmine:plugins:migrate
   ```
-2. Generates the configuration file:
+2. Generar el fichero de configuración:
   ```
   cp config/configuration.yml.example config/configuration.yml
   ```
-3. It defines the id of the Custom Field that will reflect the gender of the user in
-   config/configuration.yml
+3. Define los ids de los campos personalizados que reflejarán distintas características
+   del género del usuario en config/configuration.yml
 
-4. Define custom values and custom method (view example files)
+4. Definir valores personalizados y métodos personalizados (ver archivos de ejemplo)
 
-5. Execute populate_user_gender and populate_gender_stories tasks
+5. Ejecutar tareas:
 ```
 rake gender:populate_user_gender
 rake gender:populate_gender_stories
 ```
 
-6. Access to /gender_stories
+6. Acceder a /gender_stories
 
-## Compatibility
+
+## Compatibilidad
 
 * Redmine 4.1.1 (2020-04-06)
-* Easy Redmine from 7.06 to 10.3.1 (2020-06-24)
+* Easy Redmine desde la versión 7.06 a la 10.3.1 (2020-06-24)
 
-It will probably be compatible with previous versions of Redmine. If you try it, let us know
+Probablemente será compatible con las versiones anteriores de Redmine. Si lo intentas, haznoslo saber.
 
 
-## Libraries/gems being used
+## Liberías/gemas que se utilizan:
 
-* Gems: See [Gemfile](https://github.com/apradillap/redmine_equality_plan/blob/master/Gemfile) for complete reference
-* Other (CSS, JS): #ToDo (browse source meanwhile ;)
+* Gemas: Ver [Gemfile](https://github.com/apradillap/redmine_equality_plan/blob/master/Gemfile) para una referencia completa
+* Otros (CSS, JS): #ToDo (navegar por la fuente mientras tanto ;)
