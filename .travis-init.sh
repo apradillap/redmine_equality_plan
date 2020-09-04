@@ -96,7 +96,7 @@ run_install() {
 
   # install gems
   mkdir -p vendor/bundle
-  bundle install --path vendor/bundle
+  bundle install --path vendor/bundle --without test
 
   # create user custom patch
   cp $PATH_TO_PLUGINS/$PLUGIN/lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb.example $PATH_TO_PLUGINS/$PLUGIN/lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb
