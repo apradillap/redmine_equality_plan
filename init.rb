@@ -1,9 +1,3 @@
-# (Rails::VERSION::MAJOR < 5 ? ActionDispatch : ActiveSupport)::Reloader.to_prepare do
-  # User.include RedmineEqualityPlan::RedminePatch::UserPatch
-  # User.include RedmineEqualityPlan::RedminePatch::UserCustomPatch
-  # CustomField.include RedmineEqualityPlan::RedminePatch::CustomFieldPatch
-# end
-
 Redmine::Plugin.register :redmine_equality_plan do
   name 'Redmine Equality Plan plugin'
   author 'Author name'
@@ -13,7 +7,8 @@ Redmine::Plugin.register :redmine_equality_plan do
   author_url 'http://example.com/about'
 end
 
-Rails.configuration.to_prepare do
-  RedmineEqualityPlan::RedminePatch::UserPatch.apply
-  RedmineEqualityPlan::RedminePatch::UserCustomPatch.apply
+(Rails::VERSION::MAJOR < 5 ? ActionDispatch : ActiveSupport)::Reloader.to_prepare do
+  User.include RedmineEqualityPlan::RedminePatch::UserPatch
+  User.include RedmineEqualityPlan::RedminePatch::UserCustomPatch
+  CustomField.include RedmineEqualityPlan::RedminePatch::CustomFieldPatch
 end

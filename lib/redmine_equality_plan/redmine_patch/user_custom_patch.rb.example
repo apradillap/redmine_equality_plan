@@ -3,10 +3,6 @@ module RedmineEqualityPlan
     module UserCustomPatch
       def self.included(base)
         base.class_eval do
-          def self.apply
-            User.prepend self unless User < self
-          end
-
           scope :in_company_custom, proc {
             # Define your custom scope
             User.all
