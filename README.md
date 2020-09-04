@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/apradillap/redmine_equality_plan.svg?branch=master)](https://travis-ci.org/apradillap/redmine_equality_plan)
+<a href="https://codeclimate.com/github/apradillap/redmine_equality_plan/maintainability"><img src="https://api.codeclimate.com/v1/badges/75bc2ecffcb7e3b4cc91/maintainability" /></a>
+
 <img src="https://github.com/apradillap/redmine_equality_plan/blob/master/assets/images/equality.png" width="250" height="auto">
 
 # Redmine Plan de Igualdad
@@ -23,9 +26,14 @@ utilizar para visibilizar desigualdades de etnia, idioma, religión o color.
 3. Define los ids de los campos personalizados que reflejarán distintas características
    del género del usuario en config/configuration.yml
 
-4. Definir valores personalizados y métodos personalizados (ver archivos de ejemplo)
+4. Generar el parche para usuario:
+```
+cp lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb.example lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb
+```
 
-5. Ejecutar tareas:
+5. Definir valores personalizados y métodos personalizados (ver archivos de ejemplo)
+
+6. Ejecutar tareas:
 ```
 rake gender:populate_user_gender
 rake gender:populate_gender_stories
@@ -46,3 +54,12 @@ Probablemente será compatible con las versiones anteriores de Redmine. Si lo in
 
 * Gemas: Ver [Gemfile](https://github.com/apradillap/redmine_equality_plan/blob/master/Gemfile) para una referencia completa
 * Otros (CSS, JS): #ToDo (navegar por la fuente mientras tanto ;)
+
+
+## Tests
+```
+rake test TEST=plugins/redmine_equality_plan/test/unit/gender_story_test.rb
+```
+
+## Integración con Travis
+https://github.com/alexbevi/redmine_plugins_travis-ci

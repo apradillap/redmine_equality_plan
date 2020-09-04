@@ -5,12 +5,19 @@ module RedmineEqualityPlan
         base.class_eval do
           scope :in_company_custom, proc {
             # Define your custom scope
-            # User.all
-            # Group.find(42).users
+            User.all
+          }
+          scope :for_age_range_custom, -> min, max {
+            # Define your custom scope
+            User.all
+          }
+
+          scope :for_contract_date_range_custom, -> min, max {
+            # Define your custom scope
+            User.all
           }
         end
       end
     end
   end
 end
-RedmineExtensions::PatchManager.register_model_patch 'User', 'RedmineEqualityPlan::RedminePatch::UserCustomPatch'

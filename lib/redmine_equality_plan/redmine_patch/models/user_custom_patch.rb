@@ -11,4 +11,3 @@ module RedmineEqualityPlan
     end
   end
 end
-RedmineExtensions::PatchManager.register_model_patch 'User', 'RedmineEqualityPlan::RedminePatch::UserCustomPatch'
