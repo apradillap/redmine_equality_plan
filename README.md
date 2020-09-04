@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/apradillap/redmine_equality_plan.svg?branch=master)](https://travis-ci.org/apradillap/redmine_equality_plan)
 <a href="https://codeclimate.com/github/apradillap/redmine_equality_plan/maintainability"><img src="https://api.codeclimate.com/v1/badges/75bc2ecffcb7e3b4cc91/maintainability" /></a>
 
-<img src="https://github.com/apradillap/redmine_equality_plan/blob/master/assets/images/equality.png" width="250" height="auto">
+<img src="https://github.com/apradillap/redmine_equality_plan/blob/master/assets/images/equality.png" width="400" height="auto">
 
 # Redmine Plan de Igualdad
 
