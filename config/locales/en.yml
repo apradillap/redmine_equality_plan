@@ -1,8 +1,12 @@
 # English strings go here for Rails i18n
 en:
   label_age_and_gender: Employees by age and gender
+  label_apply: Apply
   label_female: Women
   label_gender: Gender
+  label_female_pertcentage: Female pertcentage
+  label_male_pertcentage: Male perctcentage
   label_gender_statistics: Gender statistics
+  label_group_statistics: Groups statistics
   label_male: Men
   label_percentage: Percentage
