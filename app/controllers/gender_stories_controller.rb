@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 class GenderStoriesController < ApplicationController
   before_action :authorize_global, :define_months
 
-  def index
-    
-  end
+  def index; end
 
   def manage
     user = User.find(params['id'])
@@ -26,7 +26,6 @@ class GenderStoriesController < ApplicationController
                 start_date.end_of_month + count.months]
     end
 
-    @months = dates.map{|m| m.first.to_s[0..6]}   
+    @months = dates.map { |m| m.first.to_s[0..6] }
   end
-
 end

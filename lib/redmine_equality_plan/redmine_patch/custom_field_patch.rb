@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RedmineEqualityPlan
   module RedminePatch
     module CustomFieldPatch
@@ -7,7 +9,7 @@ module RedmineEqualityPlan
         end
 
         def gender_custom_field
-          self.find_by(custom_field_id: self.gender_custom_field_id)
+          find_by(custom_field_id: gender_custom_field_id)
         end
       end
     end
