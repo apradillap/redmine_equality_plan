@@ -34,6 +34,10 @@ module RedmineEqualityPlan
           self.custom_values.where(custom_field_id: gender_custom_field_id)
         end
 
+        def contract_types
+          User.custom_contract_types
+        end
+
         scope :for_age_range, -> min, max {
           User.active.in_company.for_age_range_custom(min,max)
         }
