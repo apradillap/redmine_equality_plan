@@ -28,8 +28,6 @@
 
   <div class="splitcontentright">
   </div>
-
-
 </div>
 
 <h2><%= l(:label_group_statistics) %></h2>
@@ -111,10 +109,21 @@
 <div class="splitcontent">
   <div class="splitcontentleft">
     <h2><%= l(:label_age_and_gender) %></h2>
-    
+
     <canvas id="genderAgeChart" width="100" height="100"></canvas>
   </div>
   <div class="splitcontentright">
+  </div>
+</div>
+
+<div class="splitcontent">
+  <div class="splitcontentleft">
+    <h2><%= l(:label_females_contract_type) %></h2>
+    <canvas id="contractTypesFemaleChart" width="100" height="100"></canvas>
+  </div>
+  <div class="splitcontentright">
+    <h2><%= l(:label_males_contract_type) %></h2>
+    <canvas id="contractTypesMaleChart" width="100" height="100"></canvas>
   </div>
 </div>
 
@@ -208,6 +217,61 @@
     					}
     				}
     			});
+
+  var ctxContractTypesFemaleChart = document.getElementById('contractTypesFemaleChart').getContext('2d');
+
+  data = {
+      datasets: [{
+          data: <%= raw User.custom_contract_types(User.female).values %>,
+          backgroundColor: ['#FF333F','#4633FF']
+      }],
+      // These labels appear in the legend and in the tooltips when hovering different arcs
+      labels: <%= raw User.custom_contract_types(User.female).keys %>
+  };
+
+  var myPieChart = new Chart(ctxContractTypesFemaleChart, {
+      type: 'pie',
+      data: data,
+      options: {
+          elements: {
+            rectangle: {borderWidth: 2}
+          },
+          responsive: true,
+          legend: {position: 'right'},
+          title: {
+            display: true,
+            text: '<%= l(:label_females_contract_type) %>'
+          }
+        }
+  });
+
+  var ctxContractTypesMaleChart = document.getElementById('contractTypesMaleChart').getContext('2d');
+
+  data = {
+      datasets: [{
+          data: <%= raw User.custom_contract_types(User.male).values %>,
+          backgroundColor: ['#FF333F','#4633FF']
+      }],
+      // These labels appear in the legend and in the tooltips when hovering different arcs
+      labels: <%= raw User.custom_contract_types(User.male).keys %>
+  };
+
+  var myPieChart = new Chart(ctxContractTypesMaleChart, {
+      type: 'pie',
+      data: data,
+      options: {
+          elements: {
+            rectangle: {borderWidth: 2}
+          },
+          responsive: true,
+          legend: {position: 'right'},
+          title: {
+            display: true,
+            text: '<%= l(:label_males_contract_type) %>'
+          }
+        }
+  });
+
 
 </script>
 
