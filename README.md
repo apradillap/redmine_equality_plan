@@ -1,5 +1,8 @@
 [![Build Status](https://travis-ci.org/apradillap/redmine_equality_plan.svg?branch=master)](https://travis-ci.org/apradillap/redmine_equality_plan)
 <a href="https://codeclimate.com/github/apradillap/redmine_equality_plan/maintainability"><img src="https://api.codeclimate.com/v1/badges/75bc2ecffcb7e3b4cc91/maintainability" /></a>
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+[![Help wanted](https://img.shields.io/badge/help-wanted-brightgreen.svg?style=flat-square)](https://github.com/apradillap/redmine_equality_plan/issues?q=is%3Aissue+is%3Aopen+label%3A"help+wanted")
+
 
 <img src="https://github.com/apradillap/redmine_equality_plan/blob/master/assets/images/equality.png" width="400" height="auto">
 
@@ -42,7 +45,7 @@ rake gender:populate_gender_stories
 6. Acceder a /gender_stories
 
 
-## Compatibilidad
+## Compatibilidad
 
 * Redmine 4.1.1 (2020-04-06)
 * Easy Redmine desde la versión 7.06 a la 10.3.1 (2020-06-24)
@@ -64,3 +67,13 @@ rake test TEST=plugins/redmine_equality_plan/test/unit/gender_story_test.rb
 
 ## Integración con Travis
 https://github.com/alexbevi/redmine_plugins_travis-ci
+
+
+## Apéndice conforme la licencia GNU AGPL
+
+Este repositorio es software libre: puedes redistribuirlo y/o modificarlo bajo los términos
+de la GNU Affero General Public License versión 3 y posteriores, publicada por la Free Software Foundation.
+
+Este programa se distribuye con la esperanza de ser útil, pero **sin garantía alguna**; incluso sin la garantía implícita de que pueda ser **comercializable** o **válido para un propósito concreto**. Para más detalles lee la [licencia GNU Affero General Public License](/LICENSE).
+
+Con este programa recibes una copia de dicha licencia, pero en todo caso puedes leerla en [`https://www.gnu.org/licenses/`](https://www.gnu.org/licenses/).
