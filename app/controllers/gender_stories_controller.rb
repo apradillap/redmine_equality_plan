@@ -2,7 +2,7 @@ class GenderStoriesController < ApplicationController
   before_action :authorize_global, :define_months
 
   def index
-    
+    @groups = Group.all
   end
 
   def manage

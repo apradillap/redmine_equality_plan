@@ -1,0 +1,41 @@
+<canvas id="genderGroupsChart" width="100" height="100"></canvas>
+<script>
+ var groupBarChartData = {
+  labels: <%= raw groups_min.map(&:lastname) %>,
+  datasets: [{
+    label: '<%= l(:label_female) %>',
+    backgroundColor: '#FF333F',
+    borderColor: '#FF333F',
+    borderWidth: 1,
+    data: <%= female_pertcentage %>
+  }, {
+    label: '<%= l(:label_male) %>',
+    backgroundColor: '#4633FF',
+    borderColor: '#4633FF',
+    data: <%= male_pertcentage %>
+  }]
+
+};
+var ctxGroupChart = document.getElementById('genderGroupsChart').getContext('2d');
+    window.myHorizontalBar = new Chart(ctxGroupChart, {
+      type: 'horizontalBar',
+      data: groupBarChartData,
+      options: {
+        // Elements options apply to all of the options unless overridden in a dataset
+        // In this case, we are setting the border of each horizontal bar to be 2px wide
+        elements: {
+          rectangle: {
+            borderWidth: 2,
+          }
+        },
+        responsive: true,
+        legend: {
+          position: 'right',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Horizontal Bar Chart'
+        }
+      }
+    });
+</script>
