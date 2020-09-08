@@ -16,7 +16,6 @@ ActiveSupport.on_load(:easyproject, yield: true) do
     map.project_module :easy_other_permissions do |pmap|
       pmap.permission :gender_stories, { gender_stories: %i[index] }, global: true
     end
-    # TODO: Revisar modulo
   end
 end
 
