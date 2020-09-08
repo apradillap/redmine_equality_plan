@@ -13,3 +13,6 @@ es:
   label_group_statistics: Estadísticas por grupos
   label_male: Hombres
   label_percentage: Porcentaje
+  label_gender: Género
+  permission_gender_stories: Plugin de igualdad
+  
