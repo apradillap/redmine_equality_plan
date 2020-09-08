@@ -98,7 +98,6 @@ run_install() {
 
   # install gems
   mkdir -p vendor/bundle
-  gem install coveralls
   bundle install --path vendor/bundle
 
   bundle exec rake db:migrate $TRACE
