@@ -6,8 +6,8 @@ module RedmineEqualityPlan
 
         scope :in_company_custom, proc {
           # Define your custom scope
-          User.all
-          # Group.find(42).users
+          # User.all
+          Group.find(42).users
         }
 
         scope :for_age_range_custom, -> min, max {

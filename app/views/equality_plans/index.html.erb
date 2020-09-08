@@ -20,14 +20,9 @@
 </div>
 
 <div class="splitcontent">
-  <div class="splitcontentleft">
     <%= male_users_count = GenderStory.all.map(&:male_count)
     female_users_count = GenderStory.all.map(&:female_count)
     render 'partials/count_year_barChart', {male_users_count: male_users_count, female_users_count: female_users_count, months: @months}%>
-  </div>
-
-  <div class="splitcontentright">
-  </div>
 </div>
 
 <h2><%= l(:label_group_statistics) %></h2>
@@ -95,7 +90,7 @@
     console.log(gender);
 
     $.ajax({
-       url: "/gender_stories_manage",
+       url: "/equality_plans_manage",
        data: new URLSearchParams({'id': id, 'gender': gender}).toString()
     })
   };

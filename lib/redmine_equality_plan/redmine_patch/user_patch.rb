@@ -24,6 +24,10 @@ module RedmineEqualityPlan
           User.in_company.where(id: andy_ids)
         }
 
+        scope :for_age_range, -> min, max {
+          User.active.in_company.for_age_range_custom(min,max)
+        }
+
         def gender
           d = GenderDetector.new
           d.get_gender(self.firstname, :spain).to_s.gsub('mostly_','')
@@ -37,10 +41,6 @@ module RedmineEqualityPlan
         def contract_types
           User.custom_contract_types
         end
-
-        scope :for_age_range, -> min, max {
-          User.active.in_company.for_age_range_custom(min,max)
-        }
       end
     end
   end
