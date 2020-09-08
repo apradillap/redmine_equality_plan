@@ -1,0 +1,39 @@
+<table id="list_group_users">
+  <thead>
+    <tr>
+      <th><%= l(:label_group) %></th>
+      <th><%= l(:label_total) %></th>
+      <th><%= l(:label_female) %></th>
+      <th><%= l(:label_male) %></th>
+      <th><%= l(:label_female_pertcentage) %></th>
+      <th><%= l(:label_male_pertcentage) %></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% Group.all.each do |group| %>
+      <% if group.users.count > 1 %>
+        <tr>
+          <td>
+            <%= group.lastname %>
+          </td>
+          <td>
+            <%= group.users.count %>
+          </td>
+          <td>
+            <%= group.users.female.count %>
+          </td>
+          <td>
+            <%= group.users.male.count %>
+          </td>
+          <td>
+            <%= (group.users.female.count.to_f/group.users.count*100).round(2) %>
+          </td>
+          <td>
+            <%= (group.users.male.count.to_f/group.users.count*100).round(2) %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
