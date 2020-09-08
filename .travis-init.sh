@@ -93,6 +93,7 @@ run_install() {
   fi
 
   cp $PATH_TO_PLUGINS/$PLUGIN/.travis-database.yml config/database.yml
+  cp $PATH_TO_PLUGINS/$PLUGIN/.coveralls.yml .coveralls.yml
 
   rm -rf $PATH_TO_PLUGINS/$PLUGIN
 
