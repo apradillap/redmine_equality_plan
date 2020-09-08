@@ -13,3 +13,5 @@ en:
   label_group_statistics: Groups statistics
   label_male: Men
   label_percentage: Percentage
+  label_gender: Gender
+  permission_gender_stories: Show gender stories
