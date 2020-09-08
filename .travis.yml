@@ -16,5 +16,3 @@ script:
   - bash -x ./.travis-init.sh -i || exit 1
   - bash -x ./.travis-init.sh -t || exit 1
   - bash -x ./.travis-init.sh -u || exit 1
-before_install:
-    - gem install coveralls
