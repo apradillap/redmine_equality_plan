@@ -5,6 +5,8 @@ namespace :gender do
     User.in_company.each do |user|
       custom_value = user.gender_custom_field.find_or_create_by(value: user.gender)
     end
+
+    puts 'Populate user gender'
   end
 
   desc "Save in each date number of female and male."
@@ -28,5 +30,11 @@ namespace :gender do
                          registered_on: month.first.to_date)
     end
     puts 'End Save in each date number of female and male'
+  end
+
+  desc "Clean gender stories"
+  task clean_gender_stories: :environment do
+    GenderStory.destroy_all
+    puts 'Clean gender stories'
   end
 end
