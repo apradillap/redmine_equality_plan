@@ -5,7 +5,7 @@ Coveralls.wear!
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start do
   filters.clear
-  add_filter 'plugins/redmine_equality_plan'
+  add_filter 'plugins/redmine_equality_plan/'
 end
 
 # Load the Redmine helper
