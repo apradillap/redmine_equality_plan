@@ -4,6 +4,7 @@ Coveralls.wear!
 
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start do
+  filters.clear
   add_filter 'test'
 end
 
