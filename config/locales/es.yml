@@ -7,12 +7,11 @@ es:
   label_females_contract_type: Tipos de contratos en mujeres
   label_female_pertcentage: Porcentaje de mujeres
   label_gender: Género
-  label_male_pertcentage: Porcentaje de hombres
-  label_males_contract_type: Tipos de contratos en hombres
   label_gender_statistics: Estadísticas de género
   label_group_statistics: Estadísticas por grupos
   label_male: Hombres
+  label_male_pertcentage: Porcentaje de hombres
+  label_males_contract_type: Tipos de contratos en hombres
   label_percentage: Porcentaje
-  label_gender: Género
-  permission_gender_stories: Plugin de igualdad
-  
+  label_plugin_equality_plan: Plan de igualdad
+  permission_equality_plans: Plugin de igualdad

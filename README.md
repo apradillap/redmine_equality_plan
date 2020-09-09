@@ -42,7 +42,7 @@ rake gender:populate_user_gender
 rake gender:populate_gender_stories
 ```
 
-6. Acceder a /gender_stories
+6. Acceder a /equality_plans
 
 
 ## Compatibilidad

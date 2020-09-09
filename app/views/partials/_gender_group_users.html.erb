@@ -12,25 +12,30 @@
   </thead>
   <tbody>
     <% Group.all.each do |group| %>
+    <%
+      users = group.users.count
+      males = User.active.male.where("users.id IN (SELECT gu.user_id FROM groups_users gu WHERE gu.group_id=#{group.id})").count
+      females = User.active.female.where("users.id IN (SELECT gu.user_id FROM groups_users gu WHERE gu.group_id=#{group.id})").count
+    %>
       <% if group.users.count > 1 %>
         <tr>
           <td>
             <%= group.lastname %>
           </td>
           <td>
-            <%= group.users.count %>
+            <%= users %>
           </td>
           <td>
-            <%= group.users.female.count %>
+            <%= females %>
           </td>
           <td>
-            <%= group.users.male.count %>
+            <%= males %>
           </td>
           <td>
-            <%= (group.users.female.count.to_f/group.users.count*100).round(2) %>
+            <%= ((females.to_f/users)*100).round(2).to_s + "%" %>
           </td>
           <td>
-            <%= (group.users.male.count.to_f/group.users.count*100).round(2) %>
+            <%= ((males.to_f/users)*100).round(2).to_s + "%" %>
           </td>
         </tr>
       <% end %>

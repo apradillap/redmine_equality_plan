@@ -20,14 +20,9 @@
 </div>
 
 <div class="splitcontent">
-  <div class="splitcontentleft">
     <%= male_users_count = GenderStory.all.map(&:male_count)
     female_users_count = GenderStory.all.map(&:female_count)
     render 'partials/count_year_barChart', {male_users_count: male_users_count, female_users_count: female_users_count, months: @months}%>
-  </div>
-
-  <div class="splitcontentright">
-  </div>
 </div>
 
 <h2><%= l(:label_group_statistics) %></h2>
@@ -39,10 +34,28 @@
 
   <div class="splitcontentright">
     <%
-      groups = Group.left_joins(:users).group(:id).order('COUNT(users.id) DESC').limit(10)
-      female_pertcentage = groups.map {|group| (group.users.female.count.to_f/group.users.count*100).round(2) }
-      male_pertcentage = groups.map {|group| (group.users.male.count.to_f/group.users.count*100).round(2) } %>
-      <%= render 'partials/count_gender_group_users_barChart', {female_pertcentage: female_pertcentage, male_pertcentage: male_pertcentage, groups_min: groups}%>
+      groups = Group.left_joins(:users).group(:id).where("users.status=1").order('COUNT(users.id) DESC')
+      female_hash={}
+      male_hash={}
+
+      groups.each do |group|
+        female_hash[group.id] = ((User.active.female.where("users.id IN (SELECT gu.user_id FROM groups_users gu WHERE gu.group_id=#{group.id})").count.to_f/group.users.count)*100).round(2)
+        male_hash[group.id] = ((User.active.male.where("users.id IN (SELECT gu.user_id FROM groups_users gu WHERE gu.group_id=#{group.id})").count.to_f/group.users.count)*100).round(2)
+      end
+
+      female_hash = female_hash.each { |k, v| female_hash[k].nan? ? 0 : female_hash[k] }
+      male_hash = male_hash.each { |k, v| male_hash[k].nan? ? 0 : male_hash[k] }
+
+      feminised_hash1 = female_hash.select {|k,v| v == 100}
+      masculinized_hash1 = male_hash.select { |k,v| feminised_hash1.keys.include?(k) }
+
+      masculinized_hash2 = male_hash.select {|k,v| v == 100}
+      feminised_hash2 = female_hash.select { |k,v| masculinized_hash2.keys.include?(k) }
+    %>
+
+    <%= render 'partials/count_gender_group_users_barChart', { name: 'feminisedGroupsChart', female_pertcentage: feminised_hash2.values, male_pertcentage: masculinized_hash2.values, groups_min: Group.where(id: masculinized_hash2.keys) } %>
+
+    <%= render 'partials/count_gender_group_users_barChart', { name: 'masculinizedGroupsChart', female_pertcentage: feminised_hash1.values, male_pertcentage: masculinized_hash1.values, groups_min: Group.where(id: feminised_hash1.keys) } %>
   </div>
 </div>
 
@@ -95,7 +108,7 @@
     console.log(gender);
 
     $.ajax({
-       url: "/gender_stories_manage",
+       url: "/equality_plans_manage",
        data: new URLSearchParams({'id': id, 'gender': gender}).toString()
     })
   };
