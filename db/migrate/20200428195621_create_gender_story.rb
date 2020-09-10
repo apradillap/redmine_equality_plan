@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateGenderStory < ActiveRecord::Migration[4.2]
   def change
     create_table :gender_stories do |t|

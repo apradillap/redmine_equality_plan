@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 namespace :gender do
-  desc "Save in custom field gender user."
+  desc 'Save in custom field gender user.'
   task populate_user_gender: :environment do
     User.in_company.each do |user|
       custom_value = user.gender_custom_field.find_or_create_by(value: user.gender)
@@ -8,13 +10,13 @@ namespace :gender do
     puts 'Populate user gender'
   end
 
-  desc "Clean custom field gender user."
+  desc 'Clean custom field gender user.'
   task clean_user_gender: :environment do
     CustomValue.where(custom_field_id: CustomField.gender_custom_field_id).destroy_all
     puts 'Clean user gender'
   end
 
-  desc "Save in each date number of female and male."
+  desc 'Save in each date number of female and male.'
   task populate_gender_stories: :environment do
     start_date = User.first.created_on
     end_date = Date.today
@@ -28,8 +30,8 @@ namespace :gender do
 
     dates.each do |month|
       puts 'Month ' + month.first.to_s[0..6]
-      female_count = User.in_company.female.where("created_on < ?::date AND updated_on > ?::date", month.last, month.first).size
-      male_count = User.in_company.male.where("created_on < ?::date AND updated_on > ?::date", month.last, month.first).size
+      female_count = User.in_company.female.where('created_on < ?::date AND updated_on > ?::date', month.last, month.first).size
+      male_count = User.in_company.male.where('created_on < ?::date AND updated_on > ?::date', month.last, month.first).size
       GenderStory.create(female_count: female_count,
                          male_count: male_count,
                          registered_on: month.first.to_date)
@@ -37,7 +39,7 @@ namespace :gender do
     puts 'End Save in each date number of female and male'
   end
 
-  desc "Clean gender stories"
+  desc 'Clean gender stories'
   task clean_gender_stories: :environment do
     GenderStory.destroy_all
     puts 'Clean gender stories'

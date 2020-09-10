@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Dir[File.dirname(__FILE__) + '/lib/redmine_equality_plan/redmine_patch/**/*.rb'].each { |file| require_dependency file }
 
 lib_dir = File.join(File.dirname(__FILE__), 'lib', 'redmine_equality_plan')
