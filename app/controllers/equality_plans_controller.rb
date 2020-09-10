@@ -3,7 +3,7 @@
 class EqualityPlansController < ApplicationController
   before_action :authorize_global
 
-  before_action :define_months, :groups, only: [:index]
+  before_action :define_months, :groups, :salary, :ages, only: [:index]
 
   def index
     @groups = Group.all
