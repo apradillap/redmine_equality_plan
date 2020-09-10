@@ -1,0 +1,14 @@
+---
+custom_fields_os_001:
+  name: Gender
+  regexp: ""
+  is_for_all: true
+  is_filter: true
+  type: UserCustomField
+  possible_values: ""
+  id: 1
+  is_required: false
+  field_format: string
+  default_value: "female"
+  editable: true
+  position: 2

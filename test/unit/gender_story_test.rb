@@ -1,6 +1,8 @@
 require File.expand_path('../../test_helper', __FILE__)
 
 class GenderStoryTest < ActiveSupport::TestCase
+  fixtures :all
+
   def test_initialize
     gender_story = GenderStory.new
 
@@ -9,19 +11,19 @@ class GenderStoryTest < ActiveSupport::TestCase
   end
 
   def test_assign_gender_to_female_user
-    u = User.new(:firstname => "Maria", :lastname => "user")
+    u = User.new(firstname: "Maria", lastname: "user")
     u.login = "create_email_address_os"
     u.mail = "osdefaultemail@somenet.foo"
-    assert u.save
+    u.save
 
     assert_equal(u.gender, 'female')
   end
 
   def test_assign_gender_to_male_user
-    u = User.new(:firstname => "Michael", :lastname => "user")
+    u = User.new(firstname: "Michael", lastname: "user")
     u.login = "create_email_address_os"
     u.mail = "osdefaultemail@somenet.foo"
-    assert u.save
+    u.save
 
     assert_equal(u.gender, 'male')
   end
