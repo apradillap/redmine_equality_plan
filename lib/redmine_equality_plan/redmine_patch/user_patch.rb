@@ -6,22 +6,22 @@ module RedmineEqualityPlan
           User.in_company_custom
         }
 
-        scope :male, proc {
-          gender_custom_field_id = CustomField.gender_custom_field_id
-          male_ids = CustomField.find(gender_custom_field_id).custom_values.where(value: 'male').map(&:customized_id)
-          User.in_company.where(id: male_ids)
+        scope :male, -> {
+            in_company.joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{ self.table_name }.id"))
+            .where("custom_values.custom_field_id = ?", CustomField.gender_custom_field_id)
+            .where("custom_values.value = ?", 'male')
         }
 
-        scope :female, proc {
-          gender_custom_field_id = CustomField.gender_custom_field_id
-          female_ids = CustomField.find(gender_custom_field_id).custom_values.where(value: 'female').map(&:customized_id)
-          User.in_company.where(id: female_ids)
+        scope :female, -> {
+            in_company.joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{ self.table_name }.id"))
+            .where("custom_values.custom_field_id = ?", CustomField.gender_custom_field_id)
+            .where("custom_values.value = ?", 'female')
         }
 
-         scope :andy, proc {
-          gender_custom_field_id = CustomField.gender_custom_field_id
-          andy_ids = CustomField.find(gender_custom_field_id).custom_values.where(value: 'andy').map(&:customized_id)
-          User.in_company.where(id: andy_ids)
+        scope :andy, -> {
+            in_company.joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{ self.table_name }.id"))
+            .where("custom_values.custom_field_id = ?", CustomField.gender_custom_field_id)
+            .where("custom_values.value = ?", 'andy')
         }
 
         scope :for_age_range, -> min, max {
