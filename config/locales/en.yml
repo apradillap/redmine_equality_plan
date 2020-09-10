@@ -7,9 +7,11 @@ en:
   label_females_contract_type: Females contract types
   label_female_pertcentage: Female pertcentage
   label_gender: Gender
-  label_male_pertcentage: Male perctcentage
-  label_males_contract_type: Males contract types
   label_gender_statistics: Gender statistics
   label_group_statistics: Groups statistics
   label_male: Men
+  label_male_pertcentage: Male pertcentage
+  label_males_contract_type: Males contract types
   label_percentage: Percentage
+  label_plugin_equality_plan: Equality plan
+  permission_equality_plans: Gender plugin

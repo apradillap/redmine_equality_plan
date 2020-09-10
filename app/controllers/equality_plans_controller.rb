@@ -1,4 +1,4 @@
-class GenderStoriesController < ApplicationController
+class EqualityPlansController < ApplicationController
   before_action :authorize_global, :define_months
 
   def index
@@ -7,6 +7,7 @@ class GenderStoriesController < ApplicationController
 
   def manage
     user = User.find(params['id'])
+
     user.gender_custom_field.first.update_column(:value, params['gender'])
     @users = User.andy.all
     @male_users = User.male
@@ -26,7 +27,7 @@ class GenderStoriesController < ApplicationController
                 start_date.end_of_month + count.months]
     end
 
-    @months = dates.map{|m| m.first.to_s[0..6]}   
+    @months = dates.map{|m| m.first.to_s[0..6]}
   end
 
 end

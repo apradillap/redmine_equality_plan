@@ -15,7 +15,7 @@
         <%= male_users.count %>
       </td>
       <td>
-        <%= ((male_users.count.to_f / User.in_company.count).round(2)).to_s + "%" %>
+        <%= ((male_users.count.to_f / User.in_company.count)*100).round(2).to_s + "%" %>
       </td>
     </tr>
     <tr>
@@ -26,7 +26,7 @@
         <%= female_users.count %>
       </td>
       <td>
-        <%= ((female_users.count.to_f / User.in_company.count).round(2)).to_s + "%" %>
+        <%= ((female_users.count.to_f / User.in_company.count)*100).round(2).to_s + "%" %>
       </td>
     </tr>
   </tbody>
