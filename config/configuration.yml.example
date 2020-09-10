@@ -1,4 +1,4 @@
-# gender_custom_field_id: custom_field_id
-# birthday_custom_field_id: birthday_custom_field_id
-# contract_start_date_custom_field_id: contract_start_date_custom_field_id
-# contract_type_date_custom_field_id: contract_type_date_custom_field_id
+gender_custom_field_id: custom_field_id
+birthday_custom_field_id: birthday_custom_field_id
+contract_start_date_custom_field_id: contract_start_date_custom_field_id
+contract_type_date_custom_field_id: contract_type_date_custom_field_id

@@ -16,4 +16,7 @@ es:
   label_percentage: Porcentaje
   label_plugin_equality_plan: Plan de igualdad
   label_training: Formación de empleados
+  label_trained_users: Empleados activos que han recibido formación
+  label_trained: Empleados formados
+  label_salary: Salario por genero
   permission_equality_plans: Plugin de igualdad

@@ -1,0 +1,40 @@
+<table id="count_table">
+  <thead>
+    <tr>
+      <th><%= l(:label_gender) %></th>
+      <th><%= l(:label_total) %></th>
+      <th><%= l(:label_trained) %></th>
+      <th><%= l(:label_percentage) %></th>
+    </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td>
+      <%= l(:label_male) %>
+    </td>
+     <td>
+       <%= User.male.size %>
+     </td>
+     <td>
+       <%= User.male.receiving_training.size %>
+     </td>
+     <td>
+       <%= (User.male.receiving_training.size.to_f/User.male.size).round(2)*100 %>%
+     </td>
+   </tr>
+   <tr>
+    <td>
+      <%= l(:label_female) %>
+    </td>
+     <td>
+       <%= User.female.size %>
+     </td>
+     <td>
+       <%= User.female.receiving_training.size %>
+     </td>
+     <td>
+       <%= (User.female.receiving_training.size.to_f/User.female.size).round(2)*100 %>%
+     </td>
+   </tr>
+  </tbody>
+</table>

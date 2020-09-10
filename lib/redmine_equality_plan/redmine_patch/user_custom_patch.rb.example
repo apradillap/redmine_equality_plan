@@ -16,6 +16,29 @@ module RedmineEqualityPlan
             # Define your custom scope
             User.all
           }
+
+          scope :custom_receiving_training, -> {
+            # Complete...
+            in_company
+          }
+
+          scope :custom_worker_on_leave, -> {
+            # Complete...
+            in_company
+          }
+
+          scope :custom_with_salary, -> {
+            # Complete...
+            in_company
+          }
+
+          def self.custom_contract_types(users)
+            # Complete
+          end
+
+          def custom_salary_amount
+            2000
+          end
         end
       end
     end
