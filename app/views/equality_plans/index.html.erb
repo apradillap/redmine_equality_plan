@@ -2,27 +2,24 @@
 
 <div class="splitcontent">
   <div class="splitcontentright">
-  <%= male_users = User.male
-  female_users = User.female
-  render 'partials/count_table', {male_users: male_users, female_users: female_users}%>
+    <%= render 'partials/count_table', { male_users: @male_users,
+                                         female_users: @female_users } %>
 
-  <br><br>
+    <br><br>
 
-  <%= users = User.andy.all
-  render 'partials/andy_users', {users: users}%>
-
+    <%= render 'partials/andy_users', { users: @users } %>
   </div>
 
   <div class="splitcontentleft">
-    <%= render 'partials/count_pie_chart', {male_users: male_users, female_users: female_users}%>
+    <%= render 'partials/count_pie_chart', { male_users: @male_users,
+                                             female_users: @female_users } %>
   </div>
-
 </div>
 
 <div class="splitcontent">
-    <%= male_users_count = GenderStory.all.map(&:male_count)
-    female_users_count = GenderStory.all.map(&:female_count)
-    render 'partials/count_year_barChart', {male_users_count: male_users_count, female_users_count: female_users_count, months: @months}%>
+    <%= render 'partials/count_year_barChart', { male_users_count: @male_users_count,
+                                                 female_users_count: @female_users_count,
+                                                 months: @months } %>
 </div>
 
 <h2><%= l(:label_group_statistics) %></h2>
@@ -33,56 +30,24 @@
   </div>
 
   <div class="splitcontentright">
-    <%
-      groups = Group.left_joins(:users).group(:id).where("users.status=1").order('COUNT(users.id) DESC')
-      female_hash={}
-      male_hash={}
+    <%= render 'partials/count_gender_group_users_barChart', { name: 'feminisedGroupsChart',
+                                                               female_pertcentage: @feminised_hash2.values,
+                                                               male_pertcentage: @masculinized_hash2.values,
+                                                               groups_min: Group.where(id: @masculinized_hash2.keys) } %>
 
-      groups.each do |group|
-        female_hash[group.id] = ((User.active.female.where("users.id IN (SELECT gu.user_id FROM groups_users gu WHERE gu.group_id=#{group.id})").count.to_f/group.users.count)*100).round(2)
-        male_hash[group.id] = ((User.active.male.where("users.id IN (SELECT gu.user_id FROM groups_users gu WHERE gu.group_id=#{group.id})").count.to_f/group.users.count)*100).round(2)
-      end
-
-      female_hash = female_hash.each { |k, v| female_hash[k].nan? ? 0 : female_hash[k] }
-      male_hash = male_hash.each { |k, v| male_hash[k].nan? ? 0 : male_hash[k] }
-
-      feminised_hash1 = female_hash.select {|k,v| v == 100}
-      masculinized_hash1 = male_hash.select { |k,v| feminised_hash1.keys.include?(k) }
-
-      masculinized_hash2 = male_hash.select {|k,v| v == 100}
-      feminised_hash2 = female_hash.select { |k,v| masculinized_hash2.keys.include?(k) }
-    %>
-
-    <%= render 'partials/count_gender_group_users_barChart', { name: 'feminisedGroupsChart', female_pertcentage: feminised_hash2.values, male_pertcentage: masculinized_hash2.values, groups_min: Group.where(id: masculinized_hash2.keys) } %>
-
-    <%= render 'partials/count_gender_group_users_barChart', { name: 'masculinizedGroupsChart', female_pertcentage: feminised_hash1.values, male_pertcentage: masculinized_hash1.values, groups_min: Group.where(id: feminised_hash1.keys) } %>
+    <%= render 'partials/count_gender_group_users_barChart', { name: 'masculinizedGroupsChart',
+                                                               female_pertcentage: @feminised_hash1.values,
+                                                               male_pertcentage: @masculinized_hash1.values,
+                                                               groups_min: Group.where(id: @feminised_hash1.keys) } %>
   </div>
 </div>
-
-<%
-  # Trabajadores por edad
-
-  ages = ['16-19', '20-29', '30-39', '40-49', '50-59', '60-80']
-
-  female_age_ranges = [User.for_age_range(16, 19).female.size,
-                       User.for_age_range(20, 29).female.size,
-                       User.for_age_range(30, 39).female.size,
-                       User.for_age_range(40, 49).female.size,
-                       User.for_age_range(50, 59).female.size,
-                       User.for_age_range(60, 80).female.size]
-
-  male_age_ranges = [User.for_age_range(16, 19).male.size,
-                     User.for_age_range(20, 29).male.size,
-                     User.for_age_range(30, 39).male.size,
-                     User.for_age_range(40, 49).male.size,
-                     User.for_age_range(50, 59).male.size,
-                     User.for_age_range(60, 80).male.size]
-%>
 
 <div class="splitcontent">
   <div class="splitcontentleft">
     <h2><%= l(:label_age_and_gender) %></h2>
-      <%= render 'partials/age_barChart', {ages: ages, female_age_ranges: female_age_ranges, male_age_ranges: male_age_ranges}%>
+      <%= render 'partials/age_barChart', { ages: @ages,
+                                            female_age_ranges: @female_age_ranges,
+                                            male_age_ranges: @male_age_ranges}%>
   </div>
   <div class="splitcontentright">
   </div>
@@ -104,24 +69,13 @@
 <div class="splitcontent">
   <div class="splitcontentleft">
     <h2><%= l(:label_salary) %></h2>
-    <% total_male = 0
-       total_female = 0
-       User.female.custom_with_salary.each do |user| 
-         total_female += user.salary
-       end
-
-       User.male.custom_with_salary.each do |user| 
-         total_male += user.salary
-       end
-
-       average_male_salary = total_male/User.male.custom_with_salary.size
-       average_female_salary = total_female/User.female.custom_with_salary.size
-    %>
     <div>
-      <p>Salario medio de hombres: <%= number_with_precision(average_male_salary, precision: 2, separator: ',', delimiter: '.') %>€</p><br>
-      <p>Salario medio de mujeres: <%= number_with_precision(average_female_salary, precision: 2, separator: ',', delimiter: '.') %>€</p>
+      <p>Salario medio de hombres: <%= number_with_precision(@average_male_salary, precision: 2, separator: ',', delimiter: '.') %>€</p><br>
+      <p>Salario medio de mujeres: <%= number_with_precision(@average_female_salary, precision: 2, separator: ',', delimiter: '.') %>€</p>
     </div>
-    <%= render 'partials/salary_barChart', { name: 'salaryChart', average_male_salary: average_male_salary, average_female_salary: average_female_salary} %>
+    <%= render 'partials/salary_barChart', { name: 'salaryChart',
+                                             average_male_salary: @average_male_salary,
+                                             average_female_salary: @average_female_salary } %>
   </div>
 </div>
 
@@ -130,7 +84,6 @@
 </div>
 
 <script>
-
   function manage(user) {
     var id = user.id;
     var gender = $('#gender_'+(id)).val();
@@ -141,7 +94,6 @@
        data: new URLSearchParams({'id': id, 'gender': gender}).toString()
     })
   };
-
 </script>
 
 <% content_for :header_tags do %>
