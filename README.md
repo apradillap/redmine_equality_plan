@@ -17,6 +17,17 @@ Y no solo la igualdad de género se puede visualizar con este plugin, también s
 utilizar para visibilizar desigualdades de etnia, idioma, religión o color.
 
 
+## Qué ofrece
+ * Visualización del total de hombres y mujeres de la organización.
+ * Indicadores estadísticos por grupos dentro de la empresa.
+ * Indicadores por género de formación, bajas o tipo de contrato.
+ * ... y más que irán llegando. ¿Tienes algo en la cabeza? ¡Hablemos!
+
+<img src="https://github.com/apradillap/redmine_equality_plan/blob/master/assets/images/gender_chart.png" width="400" height="auto">
+
+<img src="https://github.com/apradillap/redmine_equality_plan/blob/master/assets/images/age_chart.png" width="400" height="auto">
+
+
 ## Instalación
 1. Ejecutar las migraciones:
   ```
@@ -42,7 +53,7 @@ rake gender:populate_user_gender
 rake gender:populate_gender_stories
 ```
 
-6. Acceder a /equality_plans
+6. Acceder desde el menú a Plan de Igualdad (/equality_plans)
 
 
 ## Compatibilidad
@@ -65,7 +76,7 @@ rake test TEST=plugins/redmine_equality_plan/test/unit/gender_story_test.rb
 
 ```
 
-# Quién lo usa
+## Quién lo usa
 Estas son algunas de las organizaciones que usan este plugin de igualdad:
 * [Open Sistemas](https://opensistemas.com/)
 
