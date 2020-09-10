@@ -14,7 +14,7 @@ end
 ActiveSupport.on_load(:easyproject, yield: true) do
   Redmine::AccessControl.map do |map|
     map.project_module :easy_other_permissions do |pmap|
-      pmap.permission :equality_plan, { equality_plan: %i[index] }, global: true
+      pmap.permission :equality_plan, { equality_plans: %i[index] }, global: true
     end
   end
 end
