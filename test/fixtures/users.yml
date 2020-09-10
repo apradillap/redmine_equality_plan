@@ -8,7 +8,7 @@ users_os_001:
   updated_on: 2006-07-19 19:33:19 +02:00
   admin: false
   lastname: Misc
-  firstname: User
+  firstname: Adrian Maria
   auth_source_id:
   mail_notification: only_my_events
   login: miscuser10

@@ -11,20 +11,8 @@ class GenderStoryTest < ActiveSupport::TestCase
   end
 
   def test_assign_gender_to_female_user
-    u = User.new(firstname: "Maria", lastname: "user")
-    u.login = "create_email_address_os"
-    u.mail = "osdefaultemail@somenet.foo"
-    u.save
+    u = User.find(1)
 
-    assert_equal(u.gender, 'female')
-  end
-
-  def test_assign_gender_to_male_user
-    u = User.new(firstname: "Michael", lastname: "user")
-    u.login = "create_email_address_os"
-    u.mail = "osdefaultemail@somenet.foo"
-    u.save
-
-    assert_equal(u.gender, 'male')
+    assert_equal(u.gender, 'andy')
   end
 end
