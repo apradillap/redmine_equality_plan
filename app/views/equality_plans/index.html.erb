@@ -93,7 +93,36 @@
 </div>
 
 <div class="splitcontent">
-  <%= render 'partials/gender_training_chart' %>
+  <div class="splitcontentleft">
+    <%= render 'partials/gender_training_chart' %>
+  </div>
+  <div class="splitcontentright">
+    <%= render 'partials/gender_table' %>
+  </div>
+</div>
+
+<div class="splitcontent">
+  <div class="splitcontentleft">
+    <h2><%= l(:label_salary) %></h2>
+    <% total_male = 0
+       total_female = 0
+       User.female.custom_with_salary.each do |user| 
+         total_female += user.salary
+       end
+
+       User.male.custom_with_salary.each do |user| 
+         total_male += user.salary
+       end
+
+       average_male_salary = total_male/User.male.custom_with_salary.size
+       average_female_salary = total_female/User.female.custom_with_salary.size
+    %>
+    <div>
+      <p>Salario medio de hombres: <%= number_with_precision(average_male_salary, precision: 2, separator: ',', delimiter: '.') %>€</p><br>
+      <p>Salario medio de mujeres: <%= number_with_precision(average_female_salary, precision: 2, separator: ',', delimiter: '.') %>€</p>
+    </div>
+    <%= render 'partials/salary_barChart', { name: 'salaryChart', average_male_salary: average_male_salary, average_female_salary: average_female_salary} %>
+  </div>
 </div>
 
 <script>

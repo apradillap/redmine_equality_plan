@@ -13,7 +13,7 @@
   data = {
       datasets: [{
           data: <%= raw User.custom_contract_types(User.female).values %>,
-          backgroundColor: ['#FF333F','#4633FF']
+          backgroundColor: ['#FF333F','#4633FF', '#229954', '#D35400']
       }],
       // These labels appear in the legend and in the tooltips when hovering different arcs
       labels: <%= raw User.custom_contract_types(User.female).keys %>
@@ -40,7 +40,7 @@
   data = {
       datasets: [{
           data: <%= raw User.custom_contract_types(User.male).values %>,
-          backgroundColor: ['#FF333F','#4633FF']
+          backgroundColor: ['#FF333F','#4633FF', '#229954', '#D35400']
       }],
       // These labels appear in the legend and in the tooltips when hovering different arcs
       labels: <%= raw User.custom_contract_types(User.male).keys %>

@@ -14,5 +14,8 @@ en:
   label_males_contract_type: Males contract types
   label_percentage: Percentage
   label_plugin_equality_plan: Equality plan
-  label_training: Formación de empleados
+  label_training: Employees training
+  label_trained_users: Active employees who have received training
+  label_trained: Trained employees
+  label_salary: Salary by gender
   permission_equality_plans: Gender plugin

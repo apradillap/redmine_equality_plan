@@ -2,6 +2,9 @@ module RedmineEqualityPlan
   module RedminePatch
     module UserPatch
       User.class_eval do
+
+        after_save :define_gender
+
         scope :in_company, proc {
           User.in_company_custom
         }
@@ -32,6 +35,10 @@ module RedmineEqualityPlan
           User.active.in_company.for_age_range_custom(min,max)
         }
 
+        scope :with_salary, -> {
+          User.custom_with_salary
+        }
+
         def gender
           d = GenderDetector.new
           d.get_gender(self.firstname, :spain).to_s.gsub('mostly_','')
@@ -44,6 +51,10 @@ module RedmineEqualityPlan
 
         def contract_types
           User.custom_contract_types
+        end
+
+        def salary_amount
+          custom_salary_amount
         end
 
          def define_gender
