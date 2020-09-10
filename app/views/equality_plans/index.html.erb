@@ -82,22 +82,14 @@
 <div class="splitcontent">
   <div class="splitcontentleft">
     <h2><%= l(:label_age_and_gender) %></h2>
-
-    <canvas id="genderAgeChart" width="100" height="100"></canvas>
+      <%= render 'partials/age_barChart', {ages: ages, female_age_ranges: female_age_ranges, male_age_ranges: male_age_ranges}%>
   </div>
   <div class="splitcontentright">
   </div>
 </div>
 
 <div class="splitcontent">
-  <div class="splitcontentleft">
-    <h2><%= l(:label_females_contract_type) %></h2>
-    <canvas id="contractTypesFemaleChart" width="100" height="100"></canvas>
-  </div>
-  <div class="splitcontentright">
-    <h2><%= l(:label_males_contract_type) %></h2>
-    <canvas id="contractTypesMaleChart" width="100" height="100"></canvas>
-  </div>
+  <%= render 'partials/gender_contract_type_chart' %>
 </div>
 
 <script>
@@ -112,100 +104,6 @@
        data: new URLSearchParams({'id': id, 'gender': gender}).toString()
     })
   };
-
-  var ageBarChartData = {
-    labels: <%= raw ages %>,
-    datasets: [{
-      label: '<%= l(:label_female) %>',
-      backgroundColor: '#FF333F',
-      borderColor: '#FF333F',
-      borderWidth: 1,
-      data: <%= female_age_ranges %>
-    }, {
-      label: '<%= l(:label_male) %>',
-      backgroundColor: '#4633FF',
-      borderColor: '#4633FF',
-      data: <%= male_age_ranges %>
-    }]
-
-  };
-  var ctxAgeChart = document.getElementById('genderAgeChart').getContext('2d');
-			window.myHorizontalBar = new Chart(ctxAgeChart, {
-				type: 'horizontalBar',
-				data: ageBarChartData,
-				options: {
-					// Elements options apply to all of the options unless overridden in a dataset
-					// In this case, we are setting the border of each horizontal bar to be 2px wide
-					elements: {
-						rectangle: {
-							borderWidth: 2,
-						}
-					},
-					responsive: true,
-					legend: {
-						position: 'right',
-					},
-					title: {
-						display: true,
-						text: 'Age ranges Bar Chart'
-					}
-				}
-			});
-
-  var ctxContractTypesFemaleChart = document.getElementById('contractTypesFemaleChart').getContext('2d');
-
-  data = {
-      datasets: [{
-          data: <%= raw User.custom_contract_types(User.female).values %>,
-          backgroundColor: ['#FF333F','#4633FF']
-      }],
-      // These labels appear in the legend and in the tooltips when hovering different arcs
-      labels: <%= raw User.custom_contract_types(User.female).keys %>
-  };
-
-  var myPieChart = new Chart(ctxContractTypesFemaleChart, {
-      type: 'pie',
-      data: data,
-      options: {
-          elements: {
-            rectangle: {borderWidth: 2}
-          },
-          responsive: true,
-          legend: {position: 'right'},
-          title: {
-            display: true,
-            text: '<%= l(:label_females_contract_type) %>'
-          }
-        }
-  });
-
-  var ctxContractTypesMaleChart = document.getElementById('contractTypesMaleChart').getContext('2d');
-
-  data = {
-      datasets: [{
-          data: <%= raw User.custom_contract_types(User.male).values %>,
-          backgroundColor: ['#FF333F','#4633FF']
-      }],
-      // These labels appear in the legend and in the tooltips when hovering different arcs
-      labels: <%= raw User.custom_contract_types(User.male).keys %>
-  };
-
-  var myPieChart = new Chart(ctxContractTypesMaleChart, {
-      type: 'pie',
-      data: data,
-      options: {
-          elements: {
-            rectangle: {borderWidth: 2}
-          },
-          responsive: true,
-          legend: {position: 'right'},
-          title: {
-            display: true,
-            text: '<%= l(:label_males_contract_type) %>'
-          }
-        }
-  });
-
 
 </script>
 

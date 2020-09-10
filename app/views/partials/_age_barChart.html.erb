@@ -1,0 +1,40 @@
+<canvas id="genderAgeChart" width="100" height="100"></canvas>
+<script > var ageBarChartData = {
+    labels: <%= raw ages %>,
+    datasets: [{
+      label: '<%= l(:label_female) %>',
+      backgroundColor: '#FF333F',
+      borderColor: '#FF333F',
+      borderWidth: 1,
+      data: <%= female_age_ranges %>
+    }, {
+      label: '<%= l(:label_male) %>',
+      backgroundColor: '#4633FF',
+      borderColor: '#4633FF',
+      data: <%= male_age_ranges %>
+    }]
+
+  };
+  var ctxAgeChart = document.getElementById('genderAgeChart').getContext('2d');
+      window.myHorizontalBar = new Chart(ctxAgeChart, {
+        type: 'horizontalBar',
+        data: ageBarChartData,
+        options: {
+          // Elements options apply to all of the options unless overridden in a dataset
+          // In this case, we are setting the border of each horizontal bar to be 2px wide
+          elements: {
+            rectangle: {
+              borderWidth: 2,
+            }
+          },
+          responsive: true,
+          legend: {
+            position: 'right',
+          },
+          title: {
+            display: true,
+            text: 'Age ranges Bar Chart'
+          }
+        }
+      });
+</script>
