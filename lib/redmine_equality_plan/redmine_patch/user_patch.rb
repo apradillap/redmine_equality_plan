@@ -13,6 +13,10 @@ module RedmineEqualityPlan
           custom_receiving_training
         }
 
+        scope :worker_on_leave, -> {
+          custom_worker_on_leave
+        }
+
         scope :male, -> {
             in_company.joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{ self.table_name }.id"))
             .where("custom_values.custom_field_id = ?", CustomField.gender_custom_field_id)
