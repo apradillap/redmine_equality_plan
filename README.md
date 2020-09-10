@@ -5,6 +5,7 @@
 
 
 <img src="https://github.com/apradillap/redmine_equality_plan/blob/master/assets/images/equality.png" width="400" height="auto">
+<a href='https://www.freepik.es/vectores/diseno'>Vector de Diseño creado por freepik - www.freepik.es</a>
 
 # Redmine Plan de Igualdad
 
