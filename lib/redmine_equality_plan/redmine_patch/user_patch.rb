@@ -6,6 +6,10 @@ module RedmineEqualityPlan
           User.in_company_custom
         }
 
+        scope :receiving_training, -> {
+          custom_receiving_training
+        }
+
         scope :male, -> {
             in_company.joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{ self.table_name }.id"))
             .where("custom_values.custom_field_id = ?", CustomField.gender_custom_field_id)
