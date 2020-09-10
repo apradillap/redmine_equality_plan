@@ -45,6 +45,11 @@ module RedmineEqualityPlan
         def contract_types
           User.custom_contract_types
         end
+
+         def define_gender
+          self.gender_custom_field.find_or_create_by(value: self.gender)
+        end
+
       end
     end
   end

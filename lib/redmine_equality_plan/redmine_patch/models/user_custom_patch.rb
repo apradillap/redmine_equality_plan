@@ -32,10 +32,6 @@ module RedmineEqualityPlan
           CustomValue.where("custom_field_id=162 AND customized_type='Issue' AND customized_id IN (#{issue_ids.join(',')})").group(:value).count
         end
 
-        def define_gender
-          self.gender_custom_field.find_or_create_by(value: self.gender)
-        end
-
       end
     end
   end
