@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Redmine::Plugin.register :redmine_equality_plan do
   name 'Redmine Equality Plan plugin'
   author 'Author name'
