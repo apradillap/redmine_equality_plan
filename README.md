@@ -65,6 +65,11 @@ rake test TEST=plugins/redmine_equality_plan/test/unit/gender_story_test.rb
 
 ```
 
+# Quién lo usa
+Estas son algunas de las organizaciones que usan este plugin de igualdad:
+* [Open Sistemas](https://opensistemas.com/)
+
+
 ## Integración con Travis
 https://github.com/alexbevi/redmine_plugins_travis-ci
 
