@@ -2,11 +2,11 @@
 
 Redmine::Plugin.register :redmine_equality_plan do
   name 'Redmine Equality Plan plugin'
-  author 'Author name'
-  description 'This is a plugin for Redmine'
+  author 'Adrián Pradilla y Carlos Castellanos'
+  description 'Plugin for the diagnostic phase of an equality plan'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  url 'https://github.com/apradillap/redmine_equality_plan'
+  author_url 'https://github.com/apradillap/redmine_equality_plan'
 end
 
 (Rails::VERSION::MAJOR < 5 ? ActionDispatch : ActiveSupport)::Reloader.to_prepare do
