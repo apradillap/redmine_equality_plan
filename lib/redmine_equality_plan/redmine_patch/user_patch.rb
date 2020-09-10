@@ -3,7 +3,7 @@ module RedmineEqualityPlan
     module UserPatch
       User.class_eval do
 
-        after_save :define_gender
+        after_create :define_gender
 
         scope :in_company, proc {
           User.in_company_custom
@@ -62,7 +62,7 @@ module RedmineEqualityPlan
         end
 
          def define_gender
-          self.gender_custom_field.find_or_create_by(value: self.gender)
+          self.gender_custom_field.create!(value: self.gender)
         end
 
       end
