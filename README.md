@@ -30,31 +30,29 @@ utilizar para visibilizar desigualdades de etnia, idioma, religión o color.
 
 
 ## Instalación
-1. Ejecutar las migraciones:
-  ```
-  rake redmine:plugins:migrate
-  ```
-2. Generar el fichero de configuración:
+1. Generar el fichero de configuración:
   ```
   cp config/configuration.yml.example config/configuration.yml
   ```
-3. Define los ids de los campos personalizados que reflejarán distintas características
+2. Define los ids de los campos personalizados que reflejarán distintas características
    del género del usuario en config/configuration.yml
 
-4. Generar el parche para usuario:
-```
-cp lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb.example lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb
-```
-
+3. Generar el parche para usuario:
+  ```
+  cp lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb.example lib/redmine_equality_plan/redmine_patch/user_custom_patch.rb
+  ```
+4. Ejecutar las migraciones:
+  ```
+  rake redmine:plugins:migrate
+  ```
 5. Definir valores personalizados y métodos personalizados (ver archivos de ejemplo)
 
 6. Ejecutar tareas:
-```
-rake gender:populate_user_gender
-rake gender:populate_gender_stories
-```
-
-6. Acceder desde el menú a Plan de Igualdad (/equality_plans)
+  ```
+  rake gender:populate_user_gender
+  rake gender:populate_gender_stories
+  ```
+7. Acceder desde el menú a Plan de Igualdad (/equality_plans)
 
 
 ## Compatibilidad
