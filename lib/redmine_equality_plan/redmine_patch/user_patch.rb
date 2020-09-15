@@ -62,6 +62,10 @@ module RedmineEqualityPlan
           custom_salary_amount
         end
 
+        def invested_in_training_amount
+          custom_invested_in_training_amount
+        end
+
         def define_gender
           gender_custom_field.create!(value: gender)
        end

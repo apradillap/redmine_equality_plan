@@ -12,10 +12,10 @@
         <%= l(:label_male) %>
       </td>
       <td>
-        <%= male_users.count %>
+        <%= @total_male %>
       </td>
       <td>
-        <%= ((male_users.count.to_f / User.in_company.count)*100).round(2).to_s + "%" %>
+        <%= ((@total_male.to_f / User.in_company.count)*100).round(2).to_s + "%" %>
       </td>
     </tr>
     <tr>
@@ -23,10 +23,10 @@
         <%= l(:label_female) %>
       </td>
       <td>
-        <%= female_users.count %>
+        <%= @total_female %>
       </td>
       <td>
-        <%= ((female_users.count.to_f / User.in_company.count)*100).round(2).to_s + "%" %>
+        <%= ((@total_female.to_f / User.in_company.count)*100).round(2).to_s + "%" %>
       </td>
     </tr>
   </tbody>

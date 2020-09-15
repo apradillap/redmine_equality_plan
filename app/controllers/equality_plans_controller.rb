@@ -3,21 +3,24 @@
 class EqualityPlansController < ApplicationController
   before_action :authorize_global
 
-  before_action :define_months, :groups, :salary, :ages, only: [:index]
+  before_action :define_months, :define, :groups, :training, :salary, :ages, only: [:index]
 
   def index
-    @groups = Group.all
+    
   end
 
-  def manage
-    user = User.find(params['id'])
-
-    user.gender_custom_field.first.update_column(:value, params['gender'])
+  def define
+    @groups = Group.all
     @users = User.andy.all
     @male_users = User.male
     @female_users = User.female
     @male_users_count = GenderStory.all.map(&:male_count)
     @female_users_count = GenderStory.all.map(&:female_count)
+  end
+
+  def manage
+    user = User.find(params['id'])
+    user.gender_custom_field.first.update_column(:value, params['gender'])
   end
 
   def define_months
@@ -76,14 +79,27 @@ class EqualityPlansController < ApplicationController
     @total_male = 0
     @total_female = 0
     User.female.custom_with_salary.each do |user|
-      @total_female += user.salary
+      @total_female += user.salary_amount
     end
 
     User.male.custom_with_salary.each do |user|
-      @total_male += user.salary
+      @total_male += user.salary_amount
     end
 
-    @average_male_salary = total_male/User.male.custom_with_salary.size
-    @average_female_salary = total_female/User.female.custom_with_salary.size
+    @average_male_salary = @total_male/User.male.custom_with_salary.size
+    @average_female_salary = @total_female/User.female.custom_with_salary.size
+  end
+
+  def training
+    @total_male_training_amount = 0
+    @total_female_training_amount = 0
+
+    @male_users.each do |male|
+      @total_male_training_amount += male.total_invested_in_training_amount
+    end 
+
+    @female_users.each do |female|
+      @total_female_training_amount += female.total_invested_in_training_amount
+    end
   end
 end

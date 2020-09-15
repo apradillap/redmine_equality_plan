@@ -5,6 +5,7 @@
       <th><%= l(:label_total) %></th>
       <th><%= l(:label_trained) %></th>
       <th><%= l(:label_percentage) %></th>
+      <th><%= l(:label_total_training) %></th>
     </tr>
   </thead>
   <tbody>
@@ -13,13 +14,16 @@
       <%= l(:label_male) %>
     </td>
      <td>
-       <%= User.male.size %>
+       <%= @male_users.size %>
      </td>
      <td>
-       <%= User.male.receiving_training.size %>
+       <%= @male_users.receiving_training.size %>
      </td>
      <td>
-       <%= (User.male.receiving_training.size.to_f/User.male.size).round(2)*100 %>%
+       <%= (@male_users.receiving_training.size.to_f/@male_users.size).round(2)*100 %>%
+     </td>
+     <td>
+       <%= number_with_precision(@total_male_training_amount, precision: 2, separator: ',', delimiter: '.') %>€
      </td>
    </tr>
    <tr>
@@ -27,13 +31,16 @@
       <%= l(:label_female) %>
     </td>
      <td>
-       <%= User.female.size %>
+       <%= @female_users.size %>
      </td>
      <td>
-       <%= User.female.receiving_training.size %>
+       <%= @female_users.receiving_training.size %>
      </td>
      <td>
-       <%= (User.female.receiving_training.size.to_f/User.female.size).round(2)*100 %>%
+       <%= (@female_users.receiving_training.size.to_f/@female_users.size).round(2)*100 %>%
+     </td>
+     <td>
+      <%= number_with_precision(@total_female_training_amount, precision: 2, separator: ',', delimiter: '.') %>€
      </td>
    </tr>
   </tbody>
