@@ -6,7 +6,7 @@ class EqualityPlansController < ApplicationController
   before_action :define_months, :define, :groups, :training, :salary, :ages, only: [:index]
 
   def index
-    
+
   end
 
   def define
@@ -86,8 +86,8 @@ class EqualityPlansController < ApplicationController
       @total_male += user.salary_amount
     end
 
-    @average_male_salary = @total_male/User.male.custom_with_salary.size
-    @average_female_salary = @total_female/User.female.custom_with_salary.size
+    @average_male_salary = User.male.custom_with_salary.size == 0 ? 0: @total_male/User.male.custom_with_salary.size
+    @average_female_salary = User.female.custom_with_salary.size == 0 ? 0 : @total_female/User.female.custom_with_salary.size
   end
 
   def training
@@ -95,11 +95,11 @@ class EqualityPlansController < ApplicationController
     @total_female_training_amount = 0
 
     @male_users.each do |male|
-      @total_male_training_amount += male.total_invested_in_training_amount
-    end 
+      @total_male_training_amount += male.invested_in_training_amount
+    end
 
     @female_users.each do |female|
-      @total_female_training_amount += female.total_invested_in_training_amount
+      @total_female_training_amount += female.invested_in_training_amount
     end
   end
 end
