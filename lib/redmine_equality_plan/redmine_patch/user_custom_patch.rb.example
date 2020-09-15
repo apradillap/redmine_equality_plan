@@ -34,6 +34,7 @@ module RedmineEqualityPlan
 
           def self.custom_contract_types(users)
             # Complete
+            { undefined: 1 }
           end
 
           def self.custom_invested_in_training_amount
@@ -42,6 +43,10 @@ module RedmineEqualityPlan
 
           def custom_salary_amount
             2000
+          end
+
+          def custom_invested_in_training_amount
+            200
           end
         end
       end

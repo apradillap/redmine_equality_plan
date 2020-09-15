@@ -45,7 +45,7 @@ utilizar para visibilizar desigualdades de etnia, idioma, religión o color.
   ```
   rake redmine:plugins:migrate
   ```
-5. Definir valores personalizados y métodos personalizados (ver archivos de ejemplo)
+5. Definir valores personalizados config/configuration.yml y métodos personalizados (ver archivos de ejemplo)
 
 6. Ejecutar tareas:
   ```
