@@ -8,6 +8,10 @@ module RedmineEqualityPlan
           YAML.load_file('plugins/redmine_equality_plan/config/configuration.yml')['gender_custom_field_id']
         end
 
+        def self.birthday_custom_field_id
+          YAML.load_file('plugins/redmine_equality_plan/config/configuration.yml')['birthday_custom_field_id']
+        end
+
         def gender_custom_field
           find_by(custom_field_id: gender_custom_field_id)
         end

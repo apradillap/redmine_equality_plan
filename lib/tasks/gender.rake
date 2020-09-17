@@ -19,7 +19,7 @@ namespace :gender do
   desc 'Save in each date number of female and male.'
   task populate_gender_stories: :environment do
     start_date = User.first.created_on
-    end_date = Date.today
+    end_date = Date.today + 1.month
 
     number_of_months = (end_date.year * 12 + end_date.month) - (start_date.year * 12 + start_date.month)
 
