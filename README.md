@@ -56,6 +56,7 @@ utilizar para visibilizar desigualdades de etnia, idioma, religión o color.
 
 * Redmine 4.1.1 (2020-04-06)
 * Easy Redmine desde la versión 7.06 a la 10.3.1 (2020-06-24)
+* PostgreSQL
 
 Probablemente será compatible con las versiones anteriores de Redmine. Si lo intentas, haznoslo saber.
 

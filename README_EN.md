@@ -57,6 +57,7 @@ use to make visible inequalities of ethnicity, language, religion or color.
 
 * Redmine 4.1.1 (2020-04-06)
 * Easy Redmine from version 7.06 to 10.3.1 (2020-06-24)
+* PostgreSQL
 
 It will probably be compatible with previous versions of Redmine. If you try, let us know.
 
