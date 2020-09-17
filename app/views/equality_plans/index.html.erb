@@ -17,9 +17,15 @@
 </div>
 
 <div class="splitcontent">
+  <div class="splitcontentleft">
     <%= render 'partials/count_year_barChart', { male_users_count: @male_users_count,
                                                  female_users_count: @female_users_count,
                                                  months: @months } %>
+  </div>
+
+  <div class="splitcontentright">
+
+  </div>
 </div>
 
 <h2><%= l(:label_group_statistics) %></h2>
