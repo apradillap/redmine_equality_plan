@@ -15,7 +15,7 @@
                                              female_users: @female_users } %>
   </div>
 </div>
-<% byebug %>
+
 <div class="splitcontent">
     <%= render 'partials/count_year_barChart', { male_users_count: @male_users_count,
                                                  female_users_count: @female_users_count,
@@ -70,7 +70,7 @@
   <div class="splitcontentleft">
     <h2><%= l(:label_salary) %></h2>
     <div>
-      <p>Salario medio de hombres: <%= number_with_precision(@average_male_salary, precision: 2, separator: ',', delimiter: '.') %>€</p><br>
+      <p>Salario medio de hombres: <%= number_with_precision(@average_male_salary, precision: 2, separator: ',', delimiter: '.') %>€</p>
       <p>Salario medio de mujeres: <%= number_with_precision(@average_female_salary, precision: 2, separator: ',', delimiter: '.') %>€</p>
     </div>
     <%= render 'partials/salary_barChart', { name: 'salaryChart',

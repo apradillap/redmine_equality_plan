@@ -1,4 +1,4 @@
-<canvas id="<%= name %>" width="100" height="20"></canvas>
+<canvas id="<%= name %>" width="300" height="300"></canvas>
 <script>
  var chartName = "<%= name %>";
  var salaryBarChartData = {
@@ -27,7 +27,7 @@ var ctxSalaryChart = document.getElementById(chartName).getContext('2d');
             borderWidth: 2,
           }
         },
-        responsive: true,
+        responsive: false,
         legend: {
           position: 'right',
         },
@@ -35,7 +35,7 @@ var ctxSalaryChart = document.getElementById(chartName).getContext('2d');
           display: true,
           text: 'Salary by gender'
         },
-        scales: { xAxes: [{ ticks: { beginAtZero: true, min:0 } }] } 
+        scales: { xAxes: [{ ticks: { beginAtZero: true, min:0 } }] }
       }
     });
 </script>
