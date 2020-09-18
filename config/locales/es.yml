@@ -1,18 +1,28 @@
 # Spanish strings go here for Rails i18n
 es:
-  label_age_and_gender: Empleados por edades y género
+  label_age_and_gender: Distribución de la plantilla por edades
   label_apply: Aplicar
   label_contract_types: Tipos de contrato
   label_female: Mujeres
   label_females_contract_type: Tipos de contratos en mujeres
   label_female_pertcentage: Porcentaje de mujeres
   label_gender: Género
+  label_gender_description: En Europa, el 33% de los puestos de trabajo TIC están ocupados por mujeres.
+    En España, en torno al 15% según datos del 'Libro Blanco de las mujeres en
+    el ámbito tecnológico', de Eurostat.
+  label_gender_disaggregated: Plantilla desagregada por sexo
   label_gender_statistics: Estadísticas de género
-  label_group_statistics: Estadísticas por grupos
-  label_male: Hombres
+  label_group_statistics: Distribución de la plantilla por departamentos
+  label_introduction: En España, con el artículo 45 de la Ley Orgánica 3/2007, de 22
+    de marzo, para la Igualdad efectiva entre mujeres y hombres, se estableció
+    que las empresas están obligadas a respetar la igualdad de trato y de
+    oportunidades en el ámbito laboral en la forma que se determine en la
+    legislación laboral.
   label_leave_of_absence: Trabajadores con baja laboral
+  label_male: Hombres
   label_male_pertcentage: Porcentaje de hombres
   label_males_contract_type: Tipos de contratos en hombres
+  label_monthly_additions: Incorporaciones mensuales desagregadas por sexo
   label_percentage: Porcentaje
   label_plugin_equality_plan: Plan de igualdad
   label_training: Formación de empleados
@@ -20,4 +30,18 @@ es:
   label_trained_users: Empleados activos que han recibido formación
   label_trained: Empleados formados
   label_salary: Salario por genero
+  label_salary_female: 'Salario medio de mujeres:'
+  label_salary_male: 'Salario medio de hombres:'
+  label_workers_contract: Distribución de la plantilla por tipo de contrato
+  label_phases_html: '<p>
+      Las fases de un Plan de Igualdad son:
+    </p>
+    <ul>
+      <li>Fase 1: Comisión de Igualdad</li>
+      <li>Fase 2: Diagnóstico</li>
+      <li>Fase 3: Elaboración del Plan de Igualdad</li>
+      <li>Fase 4: Ejecución</li>
+      <li>Fase 5: Seguimiento y control</li>
+      <li>Fase 6: Evaluación</li>
+    </ul>'
   permission_equality_plans: Plugin de igualdad
