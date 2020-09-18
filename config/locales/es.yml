@@ -32,6 +32,7 @@ es:
   label_salary: Salario por genero
   label_salary_female: 'Salario medio de mujeres:'
   label_salary_male: 'Salario medio de hombres:'
+  label_workers_by_seniority: Distribución de los trabajadores por antigüedad
   label_workers_contract: Distribución de la plantilla por tipo de contrato
   label_phases_html: '<p>
       Las fases de un Plan de Igualdad son:
