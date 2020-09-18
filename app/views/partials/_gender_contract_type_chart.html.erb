@@ -1,10 +1,10 @@
 <div class="splitcontentleft">
     <h2><%= l(:label_females_contract_type) %></h2>
-    <canvas id="contractTypesFemaleChart" width="100" height="100"></canvas>
+    <canvas id="contractTypesFemaleChart" width="300" height="300"></canvas>
   </div>
   <div class="splitcontentright">
     <h2><%= l(:label_males_contract_type) %></h2>
-    <canvas id="contractTypesMaleChart" width="100" height="100"></canvas>
+    <canvas id="contractTypesMaleChart" width="300" height="300"></canvas>
   </div>
 
 <script>
@@ -26,7 +26,7 @@
           elements: {
             rectangle: {borderWidth: 2}
           },
-          responsive: true,
+          responsive: false,
           legend: {position: 'right'},
           title: {
             display: true,
@@ -53,7 +53,7 @@
           elements: {
             rectangle: {borderWidth: 2}
           },
-          responsive: true,
+          responsive: false,
           legend: {position: 'right'},
           title: {
             display: true,

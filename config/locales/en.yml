@@ -1,23 +1,47 @@
 # English strings go here for Rails i18n
 en:
-  label_age_and_gender: Employees by age and gender
+  label_age_and_gender: Distribution of staff by age
   label_apply: Apply
   label_contract_types: Contract types
   label_female: Women
   label_females_contract_type: Females contract types
   label_female_pertcentage: Female pertcentage
   label_gender: Gender
+  label_gender_description: In Europe, 33% of ICT jobs are held by women.
+    In Spain, around 15% according to data from the 'White Paper on Women in
+    the technological field', from Eurostat.
+  label_gender_disaggregated: Sex-disaggregated workforce
   label_gender_statistics: Gender statistics
-  label_group_statistics: Groups statistics
-  label_male: Men
+  label_group_statistics: Distribution of staff by department
+  label_introduction: In Spain, with article 45 of the Organic Law 3/2007, of 22
+    March, for effective equality between women and men, was
+    that companies are obliged to respect equality of treatment and
+    opportunities in the work environment in the manner determined in the
+    labor legislation.
   label_leave_of_absence: Workers on leave
+  label_male: Men
   label_male_pertcentage: Male pertcentage
   label_males_contract_type: Males contract types
+  label_monthly_additions: Monthly additions disaggregated by sex
   label_percentage: Percentage
+  label_phases_html: '<p>
+      The phases of an Equality Plan are:
+    </p>
+    <ul>
+      <Phase 1: Equality Commission
+      <Phase 2: Diagnosis
+      <Phase 3: Elaboration of the Equality Plan
+      <Phase 4: Execution
+      <Phase 5: Monitoring and control
+      <Phase 6: Evaluation
+    </ul>'
   label_plugin_equality_plan: Equality plan
   label_training: Employees training
   label_total_training: Total invested in training
   label_trained_users: Active employees who have received training
   label_trained: Trained employees
   label_salary: Salary by gender
+  label_salary_female: 'Average salary for women:'
+  label_salary_male: 'Average salary for men:'
+  label_workers_contract: Distribution of workers by type of contract
   permission_equality_plans: Gender plugin

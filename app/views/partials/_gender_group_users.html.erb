@@ -20,7 +20,7 @@
       <% if group.users.count > 1 %>
         <tr>
           <td>
-            <%= group.lastname %>
+            <%= link_to group.lastname, group %>
           </td>
           <td>
             <%= users %>

@@ -1,5 +1,5 @@
 <h2><%= l(:label_training) %></h2>
-<canvas id="trainingChart" width="100" height="100"></canvas>
+<canvas id="trainingChart" width="300" height="300"></canvas>
 
 <script>
   var ctxTrainingChart = document.getElementById('trainingChart').getContext('2d');
@@ -23,7 +23,7 @@
           elements: {
             rectangle: {borderWidth: 2}
           },
-          responsive: true,
+          responsive: false,
           legend: {position: 'right'},
           title: {
             display: true,

@@ -1,29 +1,52 @@
-<h2><%= l(:label_gender_statistics) %></h2>
+<h1><%= l(:label_gender_statistics) %></h1>
 
 <div class="splitcontent">
-  <div class="splitcontentright">
-    <%= render 'partials/count_table', { male_users: @male_users,
-                                         female_users: @female_users } %>
+  <p>
+    <%= l(:label_introduction) %>
+  </p>
+</div>
+<div class="splitcontent">
+  <%= l(:label_phases_html).html_safe %>
+</div>
 
-    <br><br>
+<hr>
 
-    <%= render 'partials/andy_users', { users: @users } %>
-  </div>
-
+<h2><%= l(:label_gender_disaggregated) %></h2>
+<div class="splitcontent">
   <div class="splitcontentleft">
     <%= render 'partials/count_pie_chart', { male_users: @male_users,
                                              female_users: @female_users } %>
   </div>
+  <div class="splitcontentright">
+    <%= render 'partials/count_table', { male_users: @male_users,
+                                         female_users: @female_users } %>
+
+    <p>
+      <%= l(:label_gender_description) %>
+    </p>
+
+    <%= render 'partials/andy_users', { users: @users } %>
+  </div>
 </div>
 
+<hr>
+
+<h2><%= l(:label_monthly_additions) %></h2>
 <div class="splitcontent">
+  <div class="splitcontentleft">
     <%= render 'partials/count_year_barChart', { male_users_count: @male_users_count,
                                                  female_users_count: @female_users_count,
                                                  months: @months } %>
+  </div>
+
+  <div class="splitcontentright">
+
+  </div>
 </div>
 
-<h2><%= l(:label_group_statistics) %></h2>
+<hr>
 
+<h2><%= l(:label_group_statistics) %></h2>
 <div class="splitcontent">
   <div class="splitcontentleft">
     <%= render 'partials/gender_group_users' %>
@@ -42,6 +65,8 @@
   </div>
 </div>
 
+<hr>
+
 <div class="splitcontent">
   <div class="splitcontentleft">
     <h2><%= l(:label_age_and_gender) %></h2>
@@ -53,9 +78,14 @@
   </div>
 </div>
 
+<hr>
+
+<h2><%= l(:label_workers_contract) %></h2>
 <div class="splitcontent">
   <%= render 'partials/gender_contract_type_chart' %>
 </div>
+
+<hr>
 
 <div class="splitcontent">
   <div class="splitcontentleft">
@@ -66,18 +96,34 @@
   </div>
 </div>
 
+<hr>
+
 <div class="splitcontent">
   <div class="splitcontentleft">
     <h2><%= l(:label_salary) %></h2>
     <div>
-      <p>Salario medio de hombres: <%= number_with_precision(@average_male_salary, precision: 2, separator: ',', delimiter: '.') %>€</p><br>
-      <p>Salario medio de mujeres: <%= number_with_precision(@average_female_salary, precision: 2, separator: ',', delimiter: '.') %>€</p>
+      <p>
+        <%= l(:label_salary_male) %>
+        <%= number_with_precision(@average_male_salary,
+                                  precision: 2,
+                                  separator: ',',
+                                  delimiter: '.') %>€
+      </p>
+      <p>
+        <%= l(:label_salary_female) %>
+        <%= number_with_precision(@average_female_salary,
+                                  precision: 2,
+                                  separator: ',',
+                                  delimiter: '.') %>€
+      </p>
     </div>
     <%= render 'partials/salary_barChart', { name: 'salaryChart',
                                              average_male_salary: @average_male_salary,
                                              average_female_salary: @average_female_salary } %>
   </div>
 </div>
+
+<hr>
 
 <div class="splitcontent">
   <%= render 'partials/leave_of_absence_chart' %>

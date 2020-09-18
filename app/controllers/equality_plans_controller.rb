@@ -58,21 +58,23 @@ class EqualityPlansController < ApplicationController
   end
 
   def ages
-    @ages = ['16-19', '20-29', '30-39', '40-49', '50-59', '60-80']
+    if CustomField.birthday_custom_field_id != 'birthday_custom_field_id'
+      @ages = ['16-19', '20-29', '30-39', '40-49', '50-59', '60-80']
 
-    @female_age_ranges = [User.for_age_range(16, 19).female.size,
-                          User.for_age_range(20, 29).female.size,
-                          User.for_age_range(30, 39).female.size,
-                          User.for_age_range(40, 49).female.size,
-                          User.for_age_range(50, 59).female.size,
-                          User.for_age_range(60, 80).female.size]
+      @female_age_ranges = [User.for_age_range(16, 19).female.size,
+                            User.for_age_range(20, 29).female.size,
+                            User.for_age_range(30, 39).female.size,
+                            User.for_age_range(40, 49).female.size,
+                            User.for_age_range(50, 59).female.size,
+                            User.for_age_range(60, 80).female.size]
 
-    @male_age_ranges = [User.for_age_range(16, 19).male.size,
-                        User.for_age_range(20, 29).male.size,
-                        User.for_age_range(30, 39).male.size,
-                        User.for_age_range(40, 49).male.size,
-                        User.for_age_range(50, 59).male.size,
-                        User.for_age_range(60, 80).male.size]
+      @male_age_ranges = [User.for_age_range(16, 19).male.size,
+                          User.for_age_range(20, 29).male.size,
+                          User.for_age_range(30, 39).male.size,
+                          User.for_age_range(40, 49).male.size,
+                          User.for_age_range(50, 59).male.size,
+                          User.for_age_range(60, 80).male.size]
+    end
   end
 
   def salary
