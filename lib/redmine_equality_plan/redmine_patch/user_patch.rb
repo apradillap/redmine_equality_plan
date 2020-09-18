@@ -19,21 +19,33 @@ module RedmineEqualityPlan
         }
 
         scope :male, lambda {
-          in_company.joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{table_name}.id"))
-                    .where('custom_values.custom_field_id = ?', CustomField.gender_custom_field_id)
-                    .where('custom_values.value = ?', 'male')
+          joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{table_name}.id"))
+          .where('users.admin=false AND custom_values.custom_field_id = ?', CustomField.gender_custom_field_id)
+          .where('custom_values.value = ?', 'male')
+        }
+
+        scope :dismissal_male, lambda {
+          joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{table_name}.id"))
+          .where('users.admin=false AND users.status = 3 AND custom_values.custom_field_id = ?', CustomField.gender_custom_field_id)
+          .where('custom_values.value = ?', 'male')
         }
 
         scope :female, lambda {
-          in_company.joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{table_name}.id"))
-                    .where('custom_values.custom_field_id = ?', CustomField.gender_custom_field_id)
-                    .where('custom_values.value = ?', 'female')
+          joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{table_name}.id"))
+          .where('users.admin=false AND custom_values.custom_field_id = ?', CustomField.gender_custom_field_id)
+          .where('custom_values.value = ?', 'female')
+        }
+
+        scope :dismissal_female, lambda {
+          joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{table_name}.id"))
+          .where('users.admin=false AND users.status = 3 AND custom_values.custom_field_id = ?', CustomField.gender_custom_field_id)
+          .where('custom_values.value = ?', 'female')
         }
 
         scope :andy, lambda {
-          in_company.joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{table_name}.id"))
-                    .where('custom_values.custom_field_id = ?', CustomField.gender_custom_field_id)
-                    .where('custom_values.value = ?', 'andy')
+          joins(Arel.sql("inner join custom_values on custom_values.customized_id = #{table_name}.id"))
+          .where('users.admin=false AND custom_values.custom_field_id = ?', CustomField.gender_custom_field_id)
+          .where('custom_values.value = ? OR custom_values.value = ?', 'andy', '')
         }
 
         scope :for_age_range, lambda { |min, max|

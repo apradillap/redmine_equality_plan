@@ -48,6 +48,7 @@ utilizar para visibilizar desigualdades de etnia, idioma, religión o color.
   ```
   rake gender:populate_user_gender
   rake gender:populate_gender_stories
+  rake gender:populate_gender_dismissals
   ```
 6. Acceder desde el menú a Plan de Igualdad (/equality_plans)
 

@@ -13,15 +13,27 @@ class EqualityPlansController < ApplicationController
   def define
     @groups = Group.all
     @users = User.andy.all
-    @male_users = User.male
-    @female_users = User.female
+    @dismissal_users = User.where(status: 3).andy
+    @male_users = User.in_company.male
+    @female_users = User.in_company.female
     @male_users_count = GenderStory.all.map(&:male_count)
     @female_users_count = GenderStory.all.map(&:female_count)
+    @male_dismissals_count = GenderDismissal.all.map(&:male_count)
+    @female_dismissals_count = GenderDismissal.all.map(&:female_count)
   end
 
   def manage
     user = User.find(params['id'])
-    user.gender_custom_field.first.update_column(:value, params['gender'])
+
+    if user.gender_custom_field.any?
+      user.gender_custom_field.first.update_column(:value, params['gender'])
+    else
+      user.gender_custom_field.create(value: params['gender'])
+    end
+    @users = User.andy.all
+    @dismissal_users = User.where(status: 3).andy
+    @male_users = User.in_company.male
+    @female_users = User.in_company.female
   end
 
   def define_months

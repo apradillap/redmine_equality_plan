@@ -12,7 +12,19 @@
   </thead>
 
   <tbody>
-    <% @users.each do |u| %>
+    <% users.each do |u| %>
+      <tr>
+        <td>
+          <%= u.name %>
+        </td>
+        <td>
+          <%= select_tag 'gender_'+u.id.to_s, options_for_select(gender), {:include_blank => false, :label => 'Select gender'} %>
+        </td><td>
+          <%= button_tag 'Apply', {id: u.id, onclick: 'manage(this)'} %>
+        </td>
+      </tr>
+    <% end %>
+    <% dismissal_users.each do |u| %>
       <tr>
         <td>
           <%= u.name %>
