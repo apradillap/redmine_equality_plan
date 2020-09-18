@@ -13,10 +13,13 @@ class EqualityPlansController < ApplicationController
   def define
     @groups = Group.all
     @users = User.andy.all
+    @dismissal_users = User.where(status: 3)
     @male_users = User.male
     @female_users = User.female
     @male_users_count = GenderStory.all.map(&:male_count)
     @female_users_count = GenderStory.all.map(&:female_count)
+    @male_dismissals_count = GenderDismissal.all.map(&:male_count)
+    @female_dismissals_count = GenderDismissal.all.map(&:female_count)
   end
 
   def manage

@@ -1,0 +1,43 @@
+<canvas id="genderStory" width="600" height="400"></canvas>
+
+<script>
+  var ctxGenderStory = document.getElementById('genderStory').getContext('2d');
+
+  barChartData = {
+      labels: <%= raw months %>,
+      datasets: [{
+        label: '<%= l(:label_female) %>',
+        backgroundColor: '#FF333F',
+        data: <%= female_users_count %>
+      },
+      {
+        label: '<%= l(:label_male) %>',
+        backgroundColor: '#4633FF',
+        data: <%= male_users_count %>
+      }]
+  };
+
+  var stackedChart = new Chart(ctxGenderStory, {
+      type: 'bar',
+      data: barChartData,
+      options: {
+          elements: {
+            rectangle: {borderWidth: 2}
+          },
+          responsive: false,
+          legend: {position: 'right'},
+          title: {
+            display: true,
+            text: '<%= l(:label_gender_statistics) %>'
+          },
+          scales: {
+            xAxes: [{
+              stacked: true,
+            }],
+            yAxes: [{
+              stacked: true
+            }]
+          }
+        }
+  });
+</script>

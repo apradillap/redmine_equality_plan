@@ -25,7 +25,7 @@
       <%= l(:label_gender_description) %>
     </p>
 
-    <%= render 'partials/andy_users', { users: @users } %>
+    <%= render 'partials/andy_users', { users: @users, dismissal_users: @dismissal_users } %>
   </div>
 </div>
 
@@ -34,9 +34,22 @@
 <h2><%= l(:label_monthly_additions) %></h2>
 <div class="splitcontent">
   <div class="splitcontentleft">
-    <%= render 'partials/count_year_barChart', { male_users_count: @male_users_count,
-                                                 female_users_count: @female_users_count,
-                                                 months: @months } %>
+    <%= render 'partials/count_year_bar_chart', { male_users_count: @male_users_count,
+                                                  female_users_count: @female_users_count,
+                                                  months: @months } %>
+  </div>
+
+  <div class="splitcontentright">
+
+  </div>
+</div>
+
+<h2><%= l(:label_monthly_dismissals) %></h2>
+<div class="splitcontent">
+  <div class="splitcontentleft">
+    <%= render 'partials/count_year_dismissals', { male_users_count: @male_dismissals_count,
+                                                   female_users_count: @female_dismissals_count,
+                                                   months: @months } %>
   </div>
 
   <div class="splitcontentright">
