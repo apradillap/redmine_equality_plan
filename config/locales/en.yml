@@ -43,5 +43,6 @@ en:
   label_salary: Salary by gender
   label_salary_female: 'Average salary for women:'
   label_salary_male: 'Average salary for men:'
+  label_workers_by_seniority: Distribution of workers by seniority 
   label_workers_contract: Distribution of workers by type of contract
   permission_equality_plans: Gender plugin

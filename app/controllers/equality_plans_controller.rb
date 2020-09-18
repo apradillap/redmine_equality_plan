@@ -3,7 +3,8 @@
 class EqualityPlansController < ApplicationController
   before_action :authorize_global
 
-  before_action :define_months, :define, :groups, :training, :salary, :ages, only: [:index]
+  before_action :define_months, :define, :groups, :training, :salary, :ages,
+                :contract_date, only: [:index]
 
   def index
 
@@ -74,6 +75,40 @@ class EqualityPlansController < ApplicationController
                           User.for_age_range(40, 49).male.size,
                           User.for_age_range(50, 59).male.size,
                           User.for_age_range(60, 80).male.size]
+    end
+  end
+
+  def contract_date
+    if CustomField.birthday_custom_field_id != 'birthday_custom_field_id'
+      @years = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11-15', '15-20']
+
+      @female_age_years = [User.for_contract_date_range(0, 0).female.size,
+                           User.for_contract_date_range(1, 1).female.size,
+                           User.for_contract_date_range(2, 2).female.size,
+                           User.for_contract_date_range(3, 3).female.size,
+                           User.for_contract_date_range(4, 4).female.size,
+                           User.for_contract_date_range(5, 5).female.size,
+                           User.for_contract_date_range(6, 6).female.size,
+                           User.for_contract_date_range(7, 7).female.size,
+                           User.for_contract_date_range(8, 8).female.size,
+                           User.for_contract_date_range(9, 9).female.size,
+                           User.for_contract_date_range(10, 10).female.size,
+                           User.for_contract_date_range(11, 15).female.size,
+                           User.for_contract_date_range(15, 20).female.size]
+
+      @male_age_years = [User.for_contract_date_range(0, 0).male.size,
+                        User.for_contract_date_range(1, 1).male.size,
+                        User.for_contract_date_range(2, 2).male.size,
+                        User.for_contract_date_range(3, 3).male.size,
+                        User.for_contract_date_range(4, 4).male.size,
+                        User.for_contract_date_range(5, 5).male.size,
+                        User.for_contract_date_range(6, 6).male.size,
+                        User.for_contract_date_range(7, 7).male.size,
+                        User.for_contract_date_range(8, 8).male.size,
+                        User.for_contract_date_range(9, 9).male.size,
+                        User.for_contract_date_range(10, 10).male.size,
+                        User.for_contract_date_range(11, 15).male.size,
+                        User.for_contract_date_range(15, 20).male.size]
     end
   end
 

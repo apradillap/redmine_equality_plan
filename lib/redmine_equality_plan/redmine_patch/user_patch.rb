@@ -40,6 +40,10 @@ module RedmineEqualityPlan
           User.active.in_company.for_age_range_custom(min, max)
         }
 
+        scope :for_contract_date_range, lambda { |min, max|
+          User.active.in_company.for_contract_date_range_custom(min, max)
+        }
+
         scope :with_salary, lambda {
           User.custom_with_salary
         }

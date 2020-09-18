@@ -67,12 +67,25 @@
 
 <hr>
 
+<h2><%= l(:label_age_and_gender) %></h2>
 <div class="splitcontent">
   <div class="splitcontentleft">
-    <h2><%= l(:label_age_and_gender) %></h2>
-      <%= render 'partials/age_barChart', { ages: @ages,
-                                            female_age_ranges: @female_age_ranges,
-                                            male_age_ranges: @male_age_ranges}%>
+      <%= render 'partials/age_bar_chart', { ages: @ages,
+                                             female_age_ranges: @female_age_ranges,
+                                              male_age_ranges: @male_age_ranges } %>
+  </div>
+  <div class="splitcontentright">
+  </div>
+</div>
+
+<hr>
+
+<h2><%= l(:label_workers_by_seniority) %></h2>
+<div class="splitcontent">
+  <div class="splitcontentleft">
+    <%= render 'partials/year_bar_chart', { ages: @years,
+                                            female_age_ranges: @female_age_years,
+                                            male_age_ranges: @male_age_years } %>
   </div>
   <div class="splitcontentright">
   </div>
