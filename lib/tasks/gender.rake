@@ -8,7 +8,7 @@ namespace :gender do
     end
 
     User.where(status: 3).each do |user|
-      custom_value = user.gender_custom_field.find_or_create_by(value: user.gender)
+      user.define_gender
     end
 
     puts 'Populate user gender'
@@ -63,9 +63,8 @@ namespace :gender do
 
     dates.each do |month|
       puts 'Month ' + month.first.to_s[0..6]
-      byebug if month.first.to_s[0..6] == "2020-08"
-      female_count = User.where("users.status=3").female.where("updated_on::date >= ?::date AND updated_on::date <= ?::date", month.first.to_date, month.last.to_date).size
-      male_count = User.where("users.status=3").male.where("users.updated_on::date >= ?::date AND users.updated_on::date <= ?::date", "2020-08-01".to_date, "2020-08-31".to_date).size
+      female_count = User.dismissal_female.where("updated_on BETWEEN ? AND ?", month.first.to_date.to_s, month.last.to_date.to_s).size
+      male_count = User.dismissal_male.where("updated_on BETWEEN ? AND ?", month.first.to_date.to_s, month.last.to_date.to_s).size
       GenderDismissal.create(female_count: female_count,
                              male_count: male_count,
                              dismissed_on: month.first.to_date)
