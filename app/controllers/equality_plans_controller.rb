@@ -4,7 +4,7 @@ class EqualityPlansController < ApplicationController
   before_action :authorize_global
 
   before_action :define_months, :define, :groups, :training, :salary, :ages,
-                :contract_date, only: [:index]
+                :contract_date, :internal_talks, only: [:index]
 
   def index
 
@@ -150,5 +150,10 @@ class EqualityPlansController < ApplicationController
     @female_users.each do |female|
       @total_female_training_amount += female.invested_in_training_amount
     end
+  end
+
+  def internal_talks
+    @total_internal_talks = 0
+    @total_internal_talks = User.female.internal_talks.size + User.male.internal_talks.size
   end
 end
