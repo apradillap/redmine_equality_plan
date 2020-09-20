@@ -100,6 +100,7 @@ run_install() {
   mkdir -p vendor/bundle
   bundle install --path vendor/bundle
 
+  psql -c 'create database redmine_test;' -U postgres
   bundle exec rake db:migrate $TRACE
   bundle exec rake redmine:load_default_data REDMINE_LANG=en $TRACE
   bundle exec rake $GENERATE_SECRET $TRACE
