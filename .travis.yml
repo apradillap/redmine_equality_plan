@@ -13,6 +13,7 @@ addons:
       - postgresql-11
 env:
   - REDMINE_VERSION=4.1.1 VERBOSE=yes
+  - DB=postgresql
 script:
   - export PLUGIN=redmine_equality_plan
   - export WORKSPACE=$(pwd)/workspace
