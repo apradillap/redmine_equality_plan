@@ -33,5 +33,3 @@ before_install:
   - sudo pg_upgradecluster 11 main
   - sudo pg_ctlcluster 12 main restart
   - sudo pg_dropcluster 11 main
-before_script:
-  - psql -c 'create database redmine_test;' -U postgres
