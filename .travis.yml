@@ -1,14 +1,18 @@
 language: ruby
+sudo: required
 rvm:
   - ruby-2.6.3
 branches:
   only:
     - master
-addons:
-  postgresql: "9.6"
 env:
   - REDMINE_VERSION=4.1.1 VERBOSE=yes
-  - DB=postgresql
+services:
+  - postgresql
+addons:
+  postgresql: "9.6"
+before_script:
+  - bash install-postgres-10.sh
 script:
   - export PLUGIN=redmine_equality_plan
   - export WORKSPACE=$(pwd)/workspace
@@ -19,19 +23,3 @@ script:
   - bash -x ./.travis-init.sh -i || exit 1
   - bash -x ./.travis-init.sh -t || exit 1
   - bash -x ./.travis-init.sh -u || exit 1
-before_install:
-  # stop old version
-  - sudo /etc/init.d/postgresql stop
-  # add postgresql 10 repository
-  - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-  - sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs 2>/dev/null)-pgdg main" >> /etc/apt/sources.list.d/postgresql.list'
-  # install new version
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq postgresql-10 postgresql-client-10
-  # clone auth config (might need to fix source path for another version)
-  - sudo cp /etc/postgresql/9.6/main/pg_hba.conf /etc/postgresql/10/main/pg_hba.conf
-  # start new version
-  - sudo /etc/init.d/postgresql restart
-  # I haven't investigated or tried to fix, but pg10 uses another port
-  # for some reason, so tell applications to use correct port
-  - export PGPORT=5433
