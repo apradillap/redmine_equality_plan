@@ -13,6 +13,9 @@ addons:
       - postgresql-11
 env:
   - REDMINE_VERSION=4.1.1 VERBOSE=yes
+before_script:
+  - "psql -c 'create database redmine_test;' -U postgres"
+  - "rake db:migrate"
 script:
   - export PLUGIN=redmine_equality_plan
   - export WORKSPACE=$(pwd)/workspace
