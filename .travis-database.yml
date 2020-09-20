@@ -1,5 +1,4 @@
 test:
   adapter: postgresql
   database: redmine_test
-  username: travis
   encoding: utf8
