@@ -12,5 +12,5 @@ sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
 echo "Restarting Postgres 10"
 sudo service postgresql restart
 sleep 10
-sudo export PATH="/usr/lib/postgresql/10/bin:$PATH"
+export PATH="/usr/lib/postgresql/10/bin:$PATH"
 sudo psql -c 'CREATE ROLE travis SUPERUSER LOGIN CREATEDB;' -U postgres
