@@ -12,7 +12,7 @@ services:
 addons:
   postgresql: "9.6"
 before_script:
-  - bash install-postgres-10.sh
+  - bash .install-postgres-10.sh
 script:
   - export PLUGIN=redmine_equality_plan
   - export WORKSPACE=$(pwd)/workspace
