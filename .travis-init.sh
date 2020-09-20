@@ -112,7 +112,7 @@ run_install() {
   if [ "$VERBOSE" = "yes" ]; then
     export TRACE=--trace
   fi
-
+  gem install bundler:2.0.2
   bundle install --path vendor/bundle
 
   # create user custom patch
