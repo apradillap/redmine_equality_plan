@@ -15,14 +15,6 @@ addons:
       - postgresql-12
       - postgresql-client-12
       - postgresql-server-dev-12
-
-before_install:
-  - sudo pg_dropcluster --stop 12 main
-  - sudo pg_upgradecluster 11 main
-  - sudo pg_ctlcluster 12 main restart
-  - sudo pg_dropcluster 11 main
-before_script:
-  - psql -c 'create database redmine_test;' -U postgres
 env:
   - REDMINE_VERSION=4.1.1 VERBOSE=yes
   - DB=postgresql
@@ -36,3 +28,10 @@ script:
   - bash -x ./.travis-init.sh -i || exit 1
   - bash -x ./.travis-init.sh -t || exit 1
   - bash -x ./.travis-init.sh -u || exit 1
+before_install:
+  - sudo pg_dropcluster --stop 12 main
+  - sudo pg_upgradecluster 11 main
+  - sudo pg_ctlcluster 12 main restart
+  - sudo pg_dropcluster 11 main
+before_script:
+  - psql -c 'create database redmine_test;' -U postgres
