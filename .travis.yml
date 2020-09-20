@@ -1,6 +1,5 @@
 language: ruby
 dist: trusty
-cache: bundler
 services:
   - postgresql
 rvm:

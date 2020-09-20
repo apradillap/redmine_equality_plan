@@ -84,8 +84,6 @@ run_install() {
   # cd to redmine folder
   cd $PATH_TO_REDMINE
 
-  gem install bundler:2.0.2
-
   # create a link to the plugin, but avoid recursive link.
   if [ -L "$PATH_TO_PLUGINS/$PLUGIN" ]; then rm "$PATH_TO_PLUGINS/$PLUGIN"; fi
   ln -s "$PATH_TO_PLUGIN" "$PATH_TO_PLUGINS/$PLUGIN"
