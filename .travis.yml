@@ -5,16 +5,17 @@ rvm:
 branches:
   only:
     - master
-services:
-  - postgresql
 addons:
-  postgresql: "11.2"
   apt:
     packages:
-      - postgresql-11
-      - postgresql-client-11
+      - postgresql-12
+      - postgresql-client-12
 env:
   - REDMINE_VERSION=4.1.1 VERBOSE=yes
+before_install:
+  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/12/main/postgresql.conf
+  - sudo cp /etc/postgresql/{9.3,12}/main/pg_hba.conf
+  - sudo pg_ctlcluster 12 main restart
 before_script:
   - psql -c 'create database redmine_test;' -U postgres
 script:
