@@ -1,12 +1,16 @@
 language: ruby
-dist: trusty
 rvm:
   - ruby-2.6.3
 branches:
   only:
     - master
+services:
+  - postgresql
 addons:
-  postgresql: 11
+  postgresql: "11.2"
+  apt:
+    packages:
+      - postgresql-11
 env:
   - REDMINE_VERSION=4.1.1 VERBOSE=yes
 script:
