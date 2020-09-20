@@ -1,3 +1,2 @@
 test:
-<<: *default
 database: redmine_test
