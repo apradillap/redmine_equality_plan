@@ -7,9 +7,12 @@ rvm:
 branches:
   only:
     - master
+addons:
+  postgresql: 11
 env:
   - REDMINE_VERSION=4.1.1 VERBOSE=yes
 before_script:
+  - cp .travis-database.yml config/database.yml
   - psql -c 'create database redmine_test;' -U postgres
 script:
   - export PLUGIN=redmine_equality_plan
