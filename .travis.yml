@@ -12,6 +12,7 @@ addons:
   apt:
     packages:
       - postgresql-11
+      - postgresql-client-11
 env:
   - REDMINE_VERSION=4.1.1 VERBOSE=yes
 script:
