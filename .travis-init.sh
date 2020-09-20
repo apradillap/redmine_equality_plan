@@ -100,7 +100,7 @@ run_install() {
   mkdir -p vendor/bundle
   bundle install --path vendor/bundle
 
-  psql -c 'create database redmine_test;' -U postgres
+  bundle exec rake db:create $TRACE
   bundle exec rake db:migrate $TRACE
   bundle exec rake redmine:load_default_data REDMINE_LANG=en $TRACE
   bundle exec rake $GENERATE_SECRET $TRACE
@@ -112,7 +112,6 @@ run_install() {
   if [ "$VERBOSE" = "yes" ]; then
     export TRACE=--trace
   fi
-  gem install bundler:2.0.2
   bundle install --path vendor/bundle
 
   # create user custom patch
