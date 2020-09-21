@@ -70,8 +70,7 @@ Probablemente será compatible con las versiones anteriores de Redmine. Si lo in
 
 ## Tests
 ```
-rake test TEST=plugins/redmine_equality_plan/test/unit/gender_story_test.rb
-
+rake test TEST=plugins/redmine_equality_plan/test
 ```
 
 ## Quién lo usa
