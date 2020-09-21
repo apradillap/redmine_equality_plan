@@ -1,7 +1,5 @@
-default: &default
-  adapter: postgresql
 test:
-  <<: *default
+  adapter: postgresql
   database: redmine_test
   username: travis
-  encoding: utf8
+  password: ''
