@@ -2,6 +2,7 @@
 en:
   label_age_and_gender: Distribution of staff by age
   label_apply: Apply
+  label_average: Average
   label_contract_types: Contract types
   label_female: Women
   label_females_contract_type: Females contract types
@@ -23,6 +24,8 @@ en:
   label_male_pertcentage: Male pertcentage
   label_males_contract_type: Males contract types
   label_monthly_additions: Monthly additions disaggregated by sex
+  label_most_used_man: Most common tags in men
+  label_most_used_woman: Most common tags in women
   label_percentage: Percentage
   label_phases_html: '<p>
       The phases of an Equality Plan are:
@@ -36,6 +39,8 @@ en:
       <Phase 6: Evaluation
     </ul>'
   label_plugin_equality_plan: Equality plan
+  label_tag: Tag
+  label_total_tags: Total tags
   label_training: Employees training
   label_total_training: Total invested in training
   label_trained_users: Active employees who have received training
@@ -45,4 +50,6 @@ en:
   label_salary_male: 'Average salary for men:'
   label_workers_by_seniority: Distribution of workers by seniority 
   label_workers_contract: Distribution of workers by type of contract
+  label_workers_have: Workers have
+  label_workers_tag: Workers's knowledge tags
   permission_equality_plans: Gender plugin

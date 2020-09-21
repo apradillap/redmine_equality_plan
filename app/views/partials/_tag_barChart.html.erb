@@ -1,0 +1,135 @@
+<div class="splitcontentleft">
+  <h2><%= l(:label_workers_tag) %></h2>
+  <canvas id="Tags" width="300" height="300"></canvas>
+</div>
+
+<div class="splitcontentright">
+  <table id="count_table">
+    <thead>
+      <tr>
+        <th><%= l(:label_gender) %></th>
+        <th><%= l(:label_total_tags) %></th>
+        <th><%= l(:label_average) %></th>
+        <th><%= l(:label_percentage) %></th>
+      </tr>
+    </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= l(:label_male) %>
+      </td>
+      <td>
+        <%= @male_users.total_tags %>
+      </td>
+      <td>
+        <%= (@male_users.total_tags.to_f/@male_users.size).round(2) %>
+      </td>
+      <td>
+        <%= ((@male_users.total_tags.to_f/@total_tags)*100).round(2) %>%
+      </td>
+     </tr>
+     <tr>
+       <td>
+         <%= l(:label_female) %>
+       </td>
+       <td>
+         <%= @female_users.total_tags %>
+       </td>
+       <td>
+         <%= (@female_users.total_tags.to_f/@female_users.size).round(2) %>
+       </td>
+       <td>
+         <%= ((@female_users.total_tags.to_f/@total_tags)*100).round(2) %>%
+       </td>
+     </tr>
+    </tbody>
+  </table><br>
+
+  <p><b><%= l(:label_most_used_woman) %>:</b> </p>
+
+  <table id="count_table">
+    <thead>
+      <tr>
+        <th><%= l(:label_tag) %></th>
+        <th><%= l(:label_workers_have) %></th>
+      </tr>
+    </thead>
+  <tbody>
+    <% @female_tags.each do |female_tag|%>
+      <tr>
+        <td>
+          <%= ActsAsTaggableOn::Tag.find(female_tag.first) %>
+        </td>
+        <td>
+          <%= female_tag.last %>
+        </td>
+       </tr>
+    <% end %>
+  </tbody>
+  </table><br>
+
+  <p><b><%= l(:label_most_used_man) %>:</b> </p>
+  
+  <table id="count_table">
+    <thead>
+      <tr>
+        <th><%= l(:label_tag) %></th>
+        <th><%= l(:label_workers_have) %></th>
+      </tr>
+    </thead>
+  <tbody>
+    <% @male_tags.each do |male_tag|%>
+      <tr>
+        <td>
+          <%= ActsAsTaggableOn::Tag.find(male_tag.first) %>
+        </td>
+        <td>
+          <%= male_tag.last %>
+        </td>
+       </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>
+<script>
+
+  var ctxTags = document.getElementById('Tags').getContext('2d');
+
+  var salaryBarChartData = {
+    datasets: [{
+      label: '<%= l(:label_female) %>',
+      backgroundColor: '#FF333F',
+      borderColor: '#FF333F',
+      borderWidth: 1,
+      data: [<%= @female_users.total_tags %>]
+    }, {
+      label: '<%= l(:label_male) %>',
+      backgroundColor: '#4633FF',
+      borderColor: '#4633FF',
+      data: [<%= @male_users.total_tags %>]
+    }]
+  };
+
+  window.myHorizontalBar = new Chart(ctxTags, {
+    type: 'horizontalBar',
+    data: salaryBarChartData,
+    options: {
+      // Elements options apply to all of the options unless overridden in a dataset
+      // In this case, we are setting the border of each horizontal bar to be 2px wide
+      elements: {
+        rectangle: {
+          borderWidth: 2,
+        }
+      },
+      responsive: false,
+      legend: {
+        position: 'right',
+      },
+      title: {
+        display: true,
+        text: 'Tags by gender'
+      },
+      scales: { xAxes: [{ ticks: { beginAtZero: true, min:0 } }] }
+    }
+  });
+</script>
