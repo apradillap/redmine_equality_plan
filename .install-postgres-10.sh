@@ -13,4 +13,3 @@ echo "Restarting Postgres 10"
 sudo rm /usr/local/var/postgres/postmaster.pid
 sudo /etc/init.d/postgresql restart
 sleep 15
-psql -c 'create database redmine_test;' -U postgres
