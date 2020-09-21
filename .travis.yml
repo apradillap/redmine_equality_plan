@@ -1,4 +1,5 @@
 language: ruby
+sudo: required
 rvm:
   - ruby-2.6.3
 branches:
@@ -6,6 +7,15 @@ branches:
     - master
 env:
   - REDMINE_VERSION=4.1.1 VERBOSE=yes
+dist: xenial
+services:
+  - postgresql
+addons:
+  postgresql: "10"
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install --yes postgresql-server-dev-10
+  - sudo /etc/init.d/postgresql restart
 script:
   - export PLUGIN=redmine_equality_plan
   - export WORKSPACE=$(pwd)/workspace

@@ -53,6 +53,10 @@ module RedmineEqualityPlan
             2000
           end
 
+          def custom_salary_amount
+            100
+          end
+
           def custom_invested_in_training_amount
             200
           end

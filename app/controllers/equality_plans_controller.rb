@@ -4,7 +4,7 @@ class EqualityPlansController < ApplicationController
   before_action :authorize_global
 
   before_action :define_months, :define, :groups, :training, :salary, :ages,
-                :contract_date, :tags, only: [:index]
+                :contract_date, :tags, :internal_talks, only: [:index]
 
   def index
 
@@ -156,5 +156,10 @@ class EqualityPlansController < ApplicationController
     @total_tags = @male_users.total_tags + @female_users.total_tags
     @male_tags = @male_users.most_used_tags
     @female_tags = @female_users.most_used_tags
+  end
+
+  def internal_talks
+    @total_internal_talks = 0
+    @total_internal_talks = User.female.internal_talks.size + User.male.internal_talks.size
   end
 end
