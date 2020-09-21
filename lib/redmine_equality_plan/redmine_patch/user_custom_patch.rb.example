@@ -52,6 +52,10 @@ module RedmineEqualityPlan
           def custom_invested_in_training_amount
             200
           end
+
+          def self.custom_internal_talks
+            ''
+          end
         end
       end
     end
