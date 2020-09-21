@@ -58,6 +58,10 @@ module RedmineEqualityPlan
 
         scope :with_salary, lambda {
           User.custom_with_salary
+        } 
+
+        scope :internal_talks, lambda {
+          User.custom_internal_talks
         }
 
         def gender
