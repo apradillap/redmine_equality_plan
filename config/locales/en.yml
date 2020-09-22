@@ -36,6 +36,7 @@ en:
       <Phase 6: Evaluation
     </ul>'
   label_plugin_equality_plan: Equality plan
+  label_technicians: Technicians
   label_training: Employees training
   label_total_training: Total invested in training
   label_trained_users: Active employees who have received training

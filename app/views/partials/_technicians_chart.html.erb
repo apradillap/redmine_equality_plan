@@ -1,0 +1,44 @@
+<div class="splitcontentleft">
+  <h2><%= l(:label_technicians) %></h2>
+  <canvas id="<%= name %>" width="500" height="500"></canvas>
+</div>
+<script>
+ var chartName = "<%= name %>";
+ var salaryBarChartData = {
+  datasets: [{
+    label: '<%= l(:label_female) %>',
+    backgroundColor: '#FF333F',
+    borderColor: '#FF333F',
+    borderWidth: 1,
+    data: [<%= User.in_company.female.technicians.size %>]
+  }, {
+    label: '<%= l(:label_male) %>',
+    backgroundColor: '#4633FF',
+    borderColor: '#4633FF',
+    data: [<%= User.in_company.male.technicians.size %>]
+  }]
+};
+var ctxSalaryChart = document.getElementById(chartName).getContext('2d');
+    window.myHorizontalBar = new Chart(ctxSalaryChart, {
+      type: 'horizontalBar',
+      data: salaryBarChartData,
+      options: {
+        // Elements options apply to all of the options unless overridden in a dataset
+        // In this case, we are setting the border of each horizontal bar to be 2px wide
+        elements: {
+          rectangle: {
+            borderWidth: 2,
+          }
+        },
+        responsive: false,
+        legend: {
+          position: 'right',
+        },
+        title: {
+          display: true,
+          text: 'Number of technicians by gender'
+        },
+        scales: { xAxes: [{ ticks: { beginAtZero: true, min:0 } }] }
+      }
+    });
+</script>
