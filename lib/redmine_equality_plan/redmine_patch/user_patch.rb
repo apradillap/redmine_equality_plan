@@ -78,6 +78,14 @@ module RedmineEqualityPlan
           User.custom_contract_types
         end
 
+        def self.total_tags
+          custom_total_tags
+        end
+
+        def self.most_used_tags
+          custom_most_used_tags
+        end
+
         def salary_amount
           custom_salary_amount
         end
