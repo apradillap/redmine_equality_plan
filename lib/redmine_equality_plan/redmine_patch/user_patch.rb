@@ -88,7 +88,19 @@ module RedmineEqualityPlan
 
         def define_gender
           gender_custom_field.create!(value: gender)
-       end
+        end
+
+        def hours_worked_week_amount
+          custom_hours_worked_week_amount
+        end
+
+        def hours_worked_month_amount
+          custom_hours_worked_month_amount
+        end
+
+        def hours_worked_year_amount
+          custom_hours_worked_year_amount
+        end
       end
     end
   end

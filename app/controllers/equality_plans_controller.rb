@@ -4,7 +4,7 @@ class EqualityPlansController < ApplicationController
   before_action :authorize_global
 
   before_action :define_months, :define, :groups, :training, :salary, :ages,
-                :contract_date, :internal_talks, only: [:index]
+                :contract_date, :internal_talks, :total_hours_worked, only: [:index]
 
   def index
 
@@ -137,6 +137,58 @@ class EqualityPlansController < ApplicationController
 
     @average_male_salary = User.male.custom_with_salary.size == 0 ? 0: @total_male/User.male.custom_with_salary.size
     @average_female_salary = User.female.custom_with_salary.size == 0 ? 0 : @total_female/User.female.custom_with_salary.size
+  end
+
+  def total_hours_worked
+    @total_week_hours_male = 0
+    @total_week_hours_female = 0
+    @total_week_hours_company = 0
+    @total_month_hours_male = 0
+    @total_month_hours_female = 0
+    @total_month_hours_company = 0
+    @total_year_hours_male = 0
+    @total_year_hours_female = 0
+    @total_year_hours_company = 0
+
+    User.in_company.female.each do |user|
+      @total_week_hours_female += user.hours_worked_week_amount
+    end
+    User.in_company.male.each do |user|
+      @total_week_hours_male += user.hours_worked_week_amount
+    end
+    User.in_company.each do |user|
+      @total_week_hours_company += user.hours_worked_week_amount
+    end
+    @average_week_hours_male = User.in_company.male.size == 0 ? 0 : @total_week_hours_male/User.in_company.male.size
+    @average_week_hours_female = User.in_company.female.size == 0 ? 0 : @total_week_hours_female/User.in_company.female.size
+    @average_week_hours_company = User.in_company.size == 0 ? 0 : @total_week_hours_company/User.in_company.size
+
+
+    User.in_company.female.each do |user|
+      @total_month_hours_female += user.hours_worked_month_amount
+    end
+    User.in_company.male.each do |user|
+      @total_month_hours_male += user.hours_worked_month_amount
+    end
+    User.in_company.each do |user|
+      @total_month_hours_company += user.hours_worked_month_amount
+    end
+    @average_month_hours_male = User.in_company.male.size == 0 ? 0 : @total_month_hours_male/User.in_company.male.size
+    @average_month_hours_female = User.in_company.female.size == 0 ? 0 : @total_month_hours_female/User.in_company.female.size
+    @average_month_hours_company = User.in_company.size == 0 ? 0 : @total_month_hours_company/User.in_company.size
+
+    User.in_company.female.each do |user|
+      @total_year_hours_female += user.hours_worked_year_amount
+    end
+    User.in_company.male.each do |user|
+      @total_year_hours_male += user.hours_worked_year_amount
+    end 
+    User.in_company.each do |user|
+      @total_year_hours_company += user.hours_worked_year_amount
+    end
+    @average_year_hours_male = User.in_company.male.size == 0 ? 0 : @total_year_hours_male/User.in_company.male.size
+    @average_year_hours_female = User.in_company.female.size == 0 ? 0 : @total_year_hours_female/User.in_company.female.size
+    @average_year_hours_company = User.in_company.size == 0 ? 0 : @total_year_hours_company/User.in_company.size
   end
 
   def training
