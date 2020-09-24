@@ -70,8 +70,7 @@ It will probably be compatible with previous versions of Redmine. If you try, le
 
 ## Tests
 ```
-rake test TEST=plugins/redmine_equality_plan/test/unit/gender_story_test.rb
-
+rake test TEST=plugins/redmine_equality_plan/test
 ```
 
 ## Who uses it

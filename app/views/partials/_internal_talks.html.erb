@@ -1,0 +1,76 @@
+<div class="splitcontentleft">
+  <h2><%= l(:label_internal_talks) %></h2>
+  <canvas id="internalTalks" width="300" height="300"></canvas>
+</div>
+
+<div class="splitcontentright">
+  <p><b>Total internal talks:</b> <%= @total_internal_talks %></p>
+  <table id="count_table">
+    <thead>
+      <tr>
+        <th><%= l(:label_gender) %></th>
+        <th><%= l(:label_internal_talks) %></th>
+        <th><%= l(:label_percentage) %></th>
+      </tr>
+    </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= l(:label_male) %>
+      </td>
+      <td>
+        <%= @male_users.internal_talks.size %>
+      </td>
+      <td>
+        <%= ((@male_users.internal_talks.size.to_f/@total_internal_talks)*100).round(2) %>%
+      </td>
+     </tr>
+     <tr>
+       <td>
+         <%= l(:label_female) %>
+       </td>
+       <td>
+         <%= @female_users.internal_talks.size %>
+       </td>
+       <td>
+         <%= ((@female_users.internal_talks.size.to_f/@total_internal_talks)*100).round(2) %>%
+       </td>
+     </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  var ctxinternalTalks = document.getElementById('internalTalks').getContext('2d');
+
+  data = {
+      datasets: [{
+          data: [<%= @female_users.internal_talks.size %>, <%= @male_users.internal_talks.size %>],
+          backgroundColor: ['#FF333F','#4633FF']
+      }],
+      // These labels appear in the legend and in the tooltips when hovering different arcs
+      labels: [
+          '<%= l(:label_female) %>',
+          '<%= l(:label_male) %>'
+      ]
+  };
+
+
+
+  var myPieChart = new Chart(ctxinternalTalks, {
+      type: 'pie',
+      data: data,
+      options: {
+          elements: {
+            rectangle: {borderWidth: 2}
+          },
+          responsive: false,
+          legend: {position: 'right'},
+          title: {
+            display: true,
+            text: '<%= l(:label_internal_talks) %>'
+          }
+        }
+  });
+
+</script>
