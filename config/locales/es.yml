@@ -1,16 +1,26 @@
 # Spanish strings go here for Rails i18n
 es:
   label_age_and_gender: Distribución de la plantilla por edades
+  label_age_description: Gracias a este gráfico puedes visualizar el reparto de
+    los empleados por franja de edad. Gracias a él podrás tomar decisiones en cuanto
+    a contratación para mitigar posibles sesgos.
   label_apply: Aplicar
+  label_average: Media
   label_contract_types: Tipos de contrato
+  label_count_year_bar_chart: En este gráfico podrás ver la evolución de las contrataciones
+    en materia de género para hombres y mujeres a lo largo desde el registro del primer
+    usuario hasta la actualidad.
+  label_dismissals_bar_chart: En este gráfico podrás ver la evolución de las bajas
+    en materia de género para hombres y mujeres.
   label_female: Mujeres
   label_females_contract_type: Tipos de contratos en mujeres
   label_female_pertcentage: Porcentaje de mujeres
+  label_feminised_groups: Departamentos feminizados
   label_gender: Género
   label_gender_description: En Europa, el 33% de los puestos de trabajo TIC están ocupados por mujeres.
     En España, en torno al 15% según datos del 'Libro Blanco de las mujeres en
     el ámbito tecnológico', de Eurostat.
-  label_gender_disaggregated: Plantilla desagregada por sexo
+  label_gender_disaggregated: Plantilla desagregada por género
   label_gender_statistics: Estadísticas de género
   label_group_statistics: Distribución de la plantilla por departamentos
   label_internal_talks: Charlas internas
@@ -20,10 +30,14 @@ es:
     oportunidades en el ámbito laboral en la forma que se determine en la
     legislación laboral.
   label_leave_of_absence: Trabajadores con baja laboral
+  label_leave_of_absence_description: En este gráfico se muestra los empleados por género
+    que en alguna ocasión han estado de baja.
   label_male: Hombres
   label_male_pertcentage: Porcentaje de hombres
   label_males_contract_type: Tipos de contratos en hombres
-  label_monthly_additions: Incorporaciones mensuales desagregadas por sexo
+  label_masculinized_groups: Departamentos masculinizados
+  label_monthly_additions: Incorporaciones mensuales desagregadas por género
+  label_monthly_dismissals: Bajas mensuales desagregadas por género
   label_percentage: Porcentaje
   label_plugin_equality_plan: Plan de igualdad
   label_technicians: Técnicos
@@ -34,7 +48,14 @@ es:
   label_salary: Salario por genero
   label_salary_female: 'Salario medio de mujeres:'
   label_salary_male: 'Salario medio de hombres:'
+  label_technicians_chart: Este gráfico muestra la distribución del departamento técnico 
+    de la empresa. Las mujeres están en franca minoría en las disciplinas más ténicas
+    como son tecnología, ingeniería o matemática (STEM).
   label_workers_by_seniority: Distribución de los trabajadores por antigüedad
+  label_workers_by_seniority_description: En este gráfico podrá observar cuantos
+    la antigüedad de sus empleados por género. Es posible que gracias a este gráfico
+    observe alguna tendencia que le haga tomar deciones para revertirla e intentar
+    tomar medidas de fidelización de los trabajadores.
   label_workers_contract: Distribución de la plantilla por tipo de contrato
   label_worked_hours: Horas trabajadas
   label_phases_html: '<p>

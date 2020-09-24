@@ -40,7 +40,9 @@
   </div>
 
   <div class="splitcontentright">
-
+    <p>
+      <%= l(:label_count_year_bar_chart) %>
+    </p>
   </div>
 </div>
 
@@ -53,7 +55,9 @@
   </div>
 
   <div class="splitcontentright">
-
+    <p>
+      <%= l(:label_dismissals_bar_chart) %>
+    </p>
   </div>
 </div>
 
@@ -67,11 +71,13 @@
 
   <div class="splitcontentright">
     <%= render 'partials/count_gender_group_users_barChart', { name: 'feminisedGroupsChart',
+                                                               description: l(:label_feminised_groups),
                                                                female_pertcentage: @feminised_hash2.values,
                                                                male_pertcentage: @masculinized_hash2.values,
                                                                groups_min: Group.where(id: @masculinized_hash2.keys) } %>
 
     <%= render 'partials/count_gender_group_users_barChart', { name: 'masculinizedGroupsChart',
+                                                               description: l(:label_masculinized_groups),
                                                                female_pertcentage: @feminised_hash1.values,
                                                                male_pertcentage: @masculinized_hash1.values,
                                                                groups_min: Group.where(id: @feminised_hash1.keys) } %>
@@ -88,6 +94,9 @@
                                               male_age_ranges: @male_age_ranges } %>
   </div>
   <div class="splitcontentright">
+    <p>
+      <%= l(:label_age_description) %>
+    </p>
   </div>
 </div>
 
@@ -101,6 +110,9 @@
                                             male_age_ranges: @male_age_years } %>
   </div>
   <div class="splitcontentright">
+    <p>
+      <%= l(:label_workers_by_seniority_description) %>
+    </p>
   </div>
 </div>
 
@@ -152,11 +164,25 @@
 <hr>
 
 <div class="splitcontent">
-  <%= render 'partials/leave_of_absence_chart' %>
+  <div class="splitcontentleft">
+    <%= render 'partials/leave_of_absence_chart' %>
+  </div>
+  <div class="splitcontentleft">
+    <p>
+      <%= l(:label_leave_of_absence_description) %>
+    </p>
+  </div>
 </div>
 
 <div class="splitcontent">
-  <%= render 'partials/technicians_chart', { name: 'techniciansChart'} %>
+  <div class="splitcontentleft">
+    <%= render 'partials/technicians_chart', { name: 'techniciansChart'} %>
+  </div>
+  <div class="splitcontentleft">
+    <p>
+      <%= l(:label_technicians_chart) %>
+    </p>
+  </div>
 </div>
 <div class="splitcontent">
   <%= render 'partials/internal_talks' %>
