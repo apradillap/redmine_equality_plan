@@ -64,6 +64,10 @@ module RedmineEqualityPlan
           User.custom_internal_talks
         }
 
+        scope :technicians, -> {
+          User.custom_technicians
+        }
+
         def gender
           d = GenderDetector.new
           d.get_gender(firstname, :spain).to_s.gsub('mostly_', '')
@@ -84,6 +88,10 @@ module RedmineEqualityPlan
 
         def invested_in_training_amount
           custom_invested_in_training_amount
+        end
+
+        def self.technicians
+          custom_technicians
         end
 
         def define_gender

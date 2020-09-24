@@ -7,6 +7,11 @@ module RedmineEqualityPlan
             # Define your custom scope
             User.all
           }
+
+          scope :custom_technicians, -> {
+            User.all
+          }
+
           scope :for_age_range_custom, -> min, max {
             # Define your custom scope
             User.all
