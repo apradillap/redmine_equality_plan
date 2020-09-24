@@ -20,7 +20,7 @@
        <%= @male_users.receiving_training.size %>
      </td>
      <td>
-       <%= (@male_users.receiving_training.size.to_f/@male_users.size).round(2)*100 %>%
+       <%= number_with_precision((@male_users.receiving_training.size.to_f/@male_users.size).round(2)*100, precision: 2, separator: ',', delimiter: '.') %>%
      </td>
      <td>
        <%= number_with_precision(@total_male_training_amount, precision: 2, separator: ',', delimiter: '.') %>€
@@ -37,7 +37,7 @@
        <%= @female_users.receiving_training.size %>
      </td>
      <td>
-       <%= (@female_users.receiving_training.size.to_f/@female_users.size).round(2)*100 %>%
+       <%= number_with_precision((@female_users.receiving_training.size.to_f/@female_users.size).round(2)*100, precision: 2, separator: ',', delimiter: '.') %>%
      </td>
      <td>
       <%= number_with_precision(@total_female_training_amount, precision: 2, separator: ',', delimiter: '.') %>€

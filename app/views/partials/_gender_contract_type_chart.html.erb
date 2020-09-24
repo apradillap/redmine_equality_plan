@@ -10,7 +10,7 @@
 <script>
   var ctxContractTypesFemaleChart = document.getElementById('contractTypesFemaleChart').getContext('2d');
 
-  data = {
+  data_female = {
       datasets: [{
           data: <%= raw User.custom_contract_types(User.female).values %>,
           backgroundColor: ['#FF333F','#4633FF', '#229954', '#D35400']
@@ -21,7 +21,7 @@
 
   var myPieChart = new Chart(ctxContractTypesFemaleChart, {
       type: 'pie',
-      data: data,
+      data: data_female,
       options: {
           elements: {
             rectangle: {borderWidth: 2}
@@ -37,7 +37,7 @@
 
   var ctxContractTypesMaleChart = document.getElementById('contractTypesMaleChart').getContext('2d');
 
-  data = {
+  data_male = {
       datasets: [{
           data: <%= raw User.custom_contract_types(User.male).values %>,
           backgroundColor: ['#FF333F','#4633FF', '#229954', '#D35400']
@@ -46,9 +46,9 @@
       labels: <%= raw User.custom_contract_types(User.male).keys %>
   };
 
-  var myPieChart = new Chart(ctxContractTypesMaleChart, {
+  var myPieChart2 = new Chart(ctxContractTypesMaleChart, {
       type: 'pie',
-      data: data,
+      data: data_male,
       options: {
           elements: {
             rectangle: {borderWidth: 2}

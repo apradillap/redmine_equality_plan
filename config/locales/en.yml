@@ -1,11 +1,20 @@
 # English strings go here for Rails i18n
 en:
   label_age_and_gender: Distribution of staff by age
+  label_age_description: Thanks to this chart you can visualize the distribution of
+    employees by age group. Thanks to it you will be able to make decisions as to
+    he recruitment to mitigate possible biases.
   label_apply: Apply
+  label_average: Average
   label_contract_types: Contract types
+  label_count_year_bar_chart: In this chart you can see the evolution of the hiring
+    for men and women since the registration since the first user to the present day.
+  label_dismissals_bar_chart: In this chart you can see the evolution of the dismissals
+    for men and women.
   label_female: Women
   label_females_contract_type: Females contract types
   label_female_pertcentage: Female pertcentage
+  label_feminised_groups: Feminised departments
   label_gender: Gender
   label_gender_description: In Europe, 33% of ICT jobs are held by women.
     In Spain, around 15% according to data from the 'White Paper on Women in
@@ -20,10 +29,14 @@ en:
     opportunities in the work environment in the manner determined in the
     labor legislation.
   label_leave_of_absence: Workers on leave
+  label_leave_of_absence_description: This graph shows employees by gender
+    who have been on leave at some point.
   label_male: Men
   label_male_pertcentage: Male pertcentage
   label_males_contract_type: Males contract types
-  label_monthly_additions: Monthly additions disaggregated by sex
+  label_masculinized_groups: Masculinized departments
+  label_monthly_additions: Monthly additions disaggregated by gender
+  label_monthly_dismissals: Monthly dismissals disaggregated by gender
   label_percentage: Percentage
   label_phases_html: '<p>
       The phases of an Equality Plan are:
@@ -45,7 +58,14 @@ en:
   label_salary: Salary by gender
   label_salary_female: 'Average salary for women:'
   label_salary_male: 'Average salary for men:'
-  label_workers_by_seniority: Distribution of workers by seniority 
+  label_technicians_chart: This chart shows the distribution of the technical department 
+    of the company. Women are in a clear minority in the more technical disciplines
+    such as technology, engineering or mathematics (STEM).
+  label_workers_by_seniority: Distribution of workers by seniority
+  label_workers_by_seniority_description: In this graph you can see how many
+    the seniority of its employees by gender. It is possible that thanks to this
+    chart observe any tendency to take action to reverse it and try to
+    take measures to build up worker loyalty.
   label_workers_contract: Distribution of workers by type of contract
-  label_worked_hours: Worked hours 
+  label_worked_hours: Worked hours
   permission_equality_plans: Gender plugin
