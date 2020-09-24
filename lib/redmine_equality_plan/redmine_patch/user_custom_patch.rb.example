@@ -61,6 +61,17 @@ module RedmineEqualityPlan
           def self.custom_internal_talks
             ''
           end
+          def custom_hours_worked_week_amount
+            100
+          end
+
+          def custom_hours_worked_month_amount
+            1000
+          end
+
+          def custom_hours_worked_year_amount
+            10000
+          end
         end
       end
     end

@@ -47,4 +47,5 @@ en:
   label_salary_male: 'Average salary for men:'
   label_workers_by_seniority: Distribution of workers by seniority 
   label_workers_contract: Distribution of workers by type of contract
+  label_worked_hours: Worked hours 
   permission_equality_plans: Gender plugin

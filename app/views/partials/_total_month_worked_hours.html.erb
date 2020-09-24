@@ -1,0 +1,81 @@
+<div class="splitcontentleft">
+  <canvas id="total_month_hours" width="600" height="400"></canvas>
+</div>
+
+<div class="splitcontentright">
+  <p><b>Average company month worked hours:</b> <%= (@average_month_hours_company/3600).round(2) %></p>
+  <table id="count_table">
+    <thead>
+      <tr>
+        <th><%= l(:label_gender) %></th>
+        <th><%= l(:label_worked_hours) %></th>
+        <th><%= l(:label_average) %></th>
+      </tr>
+    </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= l(:label_male) %>
+      </td>
+      <td>
+        <%= (@total_month_hours_male/3600).round(2) %>h
+      </td>
+      <td>
+        <%= (@average_month_hours_male/3600).round(2) %>h
+      </td>
+     </tr>
+     <tr>
+       <td>
+         <%= l(:label_female) %>
+       </td>
+       <td>
+         <%= (@total_month_hours_female/3600).round(2) %>h
+       </td>
+       <td>
+         <%= (@average_month_hours_female/3600).round(2) %>h
+       </td>
+     </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  var ctxmonthBarChar = document.getElementById('total_month_hours').getContext('2d');
+  var monthBarChartData = {
+    datasets: [{
+      label: '<%= l(:label_female) %>',
+      backgroundColor: '#FF333F',
+      borderColor: '#FF333F',
+      borderWidth: 1,
+      data: [<%= (@total_month_hours_female/3600).round(2) %>]
+    }, {
+      label: '<%= l(:label_male) %>',
+      backgroundColor: '#4633FF',
+      borderColor: '#4633FF',
+      data: [<%= (@total_month_hours_male/3600).round(2) %>]
+    }]
+  };
+
+  window.myHorizontalBar = new Chart(ctxmonthBarChar, {
+      type: 'horizontalBar',
+      data: monthBarChartData,
+      options: {
+        // Elements options apply to all of the options unless overridden in a dataset
+        // In this case, we are setting the border of each horizontal bar to be 2px wide
+        elements: {
+          rectangle: {
+            borderWidth: 2,
+          }
+        },
+        responsive: false,
+        legend: {
+          position: 'right',
+        },
+        title: {
+          display: true,
+          text: 'Month worked hours by gender'
+        },
+        scales: { xAxes: [{ ticks: { beginAtZero: true, min:0 } }] }
+      }
+    });
+</script>
